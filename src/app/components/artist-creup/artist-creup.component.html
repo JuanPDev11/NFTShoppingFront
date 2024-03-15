@@ -1,0 +1,95 @@
+<div class="admin-form">
+  <div class="admin-form--container">
+
+    <mat-grid-list cols="3" rowHeight="100%">
+      <mat-grid-tile class="admin-form--image">
+
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <div class="admin-form--form-grid">
+          <div class="admin-form--title-container">
+            <h2 class="admin-form--title-principal" *ngIf="artistF?.id;else createtitle"> {{'Update'}} Artist</h2>
+          </div>
+          <div class="admin-form--form-container">
+            <form class="admin-form--form" [formGroup]="form3" (ngSubmit)="submit()">
+
+              <div class="admin-form--product">
+
+              </div>
+              <mat-grid-list cols="2" rowHeight="130px">
+                <mat-grid-tile rowspan="1">
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input class="admin-form--input" matInput name="nombre2" formControlName="Name">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+
+
+                <mat-grid-tile>
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput name="description" formControlName="Description">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Age</mat-label>
+                    <input type="number" matInput name="price" formControlName="Age">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Volume</mat-label>
+                    <input type="number" matInput name="displayOrder" formControlName="Volume">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile colspan="2">
+                  <div class="admin-form--input admin-form--input-file">
+                    <label class="admin-form--input-file-s" type="file">
+                      Upload File
+                      <input (change)="uploadFile($event)" type="file" class="admin-form--input-file-s-off" style="display:none;" name="file">
+                    </label>
+                  </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Total Sold</mat-label>
+                    <input type="number" matInput name="price" formControlName="TotalSold">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Followers</mat-label>
+                    <input type="number" matInput name="price" formControlName="Followers">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+
+
+                <mat-grid-tile colspan="2">
+                  <button type="submit" *ngIf="artistF?.id;else createbutton" routerLink="/artistCreUpd/{{artistF.id}}" class="admin-table--button" mat-fab extended color="primary">{{'Update'}} Artist</button>
+                </mat-grid-tile>
+
+              </mat-grid-list>
+            </form>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>
+
+<ng-template #createtitle>
+  <h1 class="admin-form--title-principal">Create Artist</h1>
+</ng-template>
+<ng-template #createbutton>
+  <button type="submit" routerLink="/artistCreUpd/" class="admin-table--button" mat-fab extended color="primary">Create Artist</button>
+</ng-template>

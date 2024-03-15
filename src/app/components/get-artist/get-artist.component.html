@@ -1,0 +1,72 @@
+<div class="admin-table">
+  <div class="admin-table--container">
+    <div class="admin-table--titlecontainer">
+      <h2 class="admin-table--titleprincipal">List of Artists</h2>
+    </div>
+    <div class="admin-table--tablematerial">
+      <div class="mat-elevation-z8 admin-table--table-container">
+        <table class="admin-table--table" mat-table [dataSource]="dataSource">
+
+
+          <ng-container matColumnDef="Image">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element">
+              <img src="{{element.imageUrl}}" width="50" height="50" />
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Name">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Name </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Description">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Description </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Age">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Age</th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.age}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Volume">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Volume </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.volume}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="TotalSold">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Total Sold </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.totalSold}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Followers">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Followers</th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.followers}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Actions">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef>
+              <button routerLink="/artistCreUpd" class="admin-table--button" mat-fab extended color="primary">Create Artist</button>
+            </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element">
+              <mat-icon class="admin-table--icon-edit" routerLink="/artistCreUpd/{{element.id}}" class="admin-table--icon-edit" aria-hidden="false" fontIcon="edit"></mat-icon>
+              <mat-icon class="admin-table--icon-trash" (click)="RemoveArtist(element.id)" aria-hidden="false" fontIcon="delete"></mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+
+    </div>
+  </div>
+</div>
