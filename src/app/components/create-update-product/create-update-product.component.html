@@ -1,7 +1,7 @@
 <div class="admin-form">
   <div class="admin-form--container">
 
-    <mat-grid-list cols="3" rowHeight="500px">
+    <mat-grid-list cols="3" rowHeight="100%">
       <mat-grid-tile class="admin-form--image">
 
       </mat-grid-tile>
@@ -14,52 +14,73 @@
             <form class="admin-form--form" [formGroup]="form2" (ngSubmit)="submit()">
 
               <div class="admin-form--product">
-                
+
               </div>
+              <mat-grid-list cols="2" rowHeight="130px">
+                <mat-grid-tile rowspan="1">
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input class="admin-form--input" matInput name="nombre2" formControlName="Name">
+                  </mat-form-field>
+                </mat-grid-tile>
 
-              <mat-form-field class="admin-form--input" appearance="fill">
-                <mat-label>Name</mat-label>
-                <input class="admin-form--input" matInput name="nombre2" [(ngModel)]="productName" formControlName="Name">
-              </mat-form-field>
+
+                <mat-grid-tile  >
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input type="number" matInput name="price" formControlName="Price">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile  >
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput name="description" formControlName="Description">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile >
+                  <mat-form-field class="admin-form--input" appearance="fill">
+                    <mat-label>Bid</mat-label>
+                    <input type="number" matInput name="displayOrder" formControlName="Bid">
+                  </mat-form-field>
+                </mat-grid-tile>
 
 
+                <mat-grid-tile colspan="2">
+                  <div class="admin-form--input admin-form--input-file">
+                    <label class="admin-form--input-file-s" type="file">
+                      Upload File
+                      <input (change)="uploadFile($event)" type="file" class="admin-form--input-file-s-off" style="display:none;" name="file" >
+                    </label>
+                  </div>
+                </mat-grid-tile>
 
-              <mat-form-field class="admin-form--input" appearance="fill">
-                <mat-label>Description</mat-label>
-                <input matInput name="description" [(ngModel)]="productDescription" formControlName="Description">
-              </mat-form-field>
+                <mat-grid-tile >
+                  <mat-form-field class="admin-form--input">
+                    <mat-label>Select a artist</mat-label>
+                    <mat-select formControlName="Artist" name="artist">
+                      <mat-option *ngFor="let cat of product2?.artists" [value]="cat.id">{{cat.name}}</mat-option>
 
-              <mat-form-field class="admin-form--input" appearance="fill">
-                <mat-label>Price</mat-label>
-                <input type="number" matInput name="price" [(ngModel)]="productPrice" formControlName="Price">
-              </mat-form-field>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
 
-              <div class="admin-form--input">
-                <label>Upload File</label>
-                <input type="file" name="file" formControlName="File">
-              </div>
 
-              <mat-form-field>
-                <mat-label>Select a category</mat-label>
-                <mat-select formControlName="Category">
-                  <mat-option *ngFor="let cat of product2?.categories" [value]="cat.id">{{cat.name}}</mat-option>
-                </mat-select>
-              </mat-form-field>
+                <mat-grid-tile >
+                  <mat-form-field class="admin-form--input">
+                    <mat-label>Select a category</mat-label>
+                    <mat-select formControlName="Category" name="category">
+                      <mat-option *ngFor="let cat of product2?.categories" [value]="cat.id">{{cat.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
 
-              <mat-form-field>
-                <mat-label>Select a artist</mat-label>
-                <mat-select formControlName="Artist">
-                  <mat-option *ngFor="let cat of product2?.artists" [value]="cat.id">{{cat.name}}</mat-option>
-                  
-                </mat-select>
-              </mat-form-field>
+                <mat-grid-tile  colspan="2">
+                  <button type="submit" *ngIf="product2?.product;else createbutton" routerLink="/creUpd/{{product2.product.id}}" class="admin-table--button" mat-fab extended color="primary">{{'Update'}} Category</button>
+                </mat-grid-tile>
 
-              <mat-form-field class="admin-form--input" appearance="fill">
-                <mat-label>Bid</mat-label>
-                <input type="number" matInput name="displayOrder" [(ngModel)]="productBid" formControlName="Bid">
-              </mat-form-field>
-
-              <button type="submit" *ngIf="product2?.product;else createbutton" routerLink="/createUpdate/{{product2.product.id}}" class="admin-table--button" mat-fab extended color="primary">{{'Update'}} Category</button>
+              </mat-grid-list>
             </form>
           </div>
         </div>

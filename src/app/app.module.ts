@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { GetProductComponent } from './components/get-product/get-product.component';
 import { CreateUpdateProductComponent } from './components/create-update-product/create-update-product.component';
+import { GetArtistComponent } from './components/get-artist/GetArtistComponent';
+import { ArtistCreupComponent } from './components/artist-creup/artist-creup.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CreateUpdateProductComponent } from './components/create-update-product
     GetCategoriesComponent,
     CreateUpdateComponent,
     GetProductComponent,
-    CreateUpdateProductComponent
+    CreateUpdateProductComponent,
+    GetArtistComponent,
+    ArtistCreupComponent
   ],
   imports: [
     BrowserModule,
