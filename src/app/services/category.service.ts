@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Category } from '../interface/category';
 import { url } from 'node:inspector';
 import { Product } from '../interface/product';
+import { Artist } from '../interface/artists';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,12 @@ export class CategoryService {
   private myAppUrl: string = environment.endpoint;
   private myApiUrl: string = 'api/Category/';
   private myApiUrlP: string = 'api/Product/';
+  private myApiUrlA: string = 'api/Artist/';
 
 
   constructor(private _http:HttpClient) { }
 
+  //Category
   getCategories(): Observable<Category[]>{
     return this._http.get<Category[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
@@ -42,6 +45,8 @@ export class CategoryService {
     return this._http.delete(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }
 
+  //Product
+
   getProduct(): Observable<Product[]> {
     return this._http.get<Product[]>(`${this.myAppUrl}${this.myApiUrlP}`);
   }
@@ -55,11 +60,41 @@ export class CategoryService {
   }
 
   postProduct(id?: number, formdata?: FormData): Observable<any> {
-    let path = `${this.myAppUrl}${this.myApiUrlP}`;
+    let path = `${this.myAppUrl}${this.myApiUrlP}createUpdate1/`;
     if (id != undefined) {
       path += `${id}`;
     }
     return this._http.post(path, formdata);
   }
-  
+
+  deleteProduct(id: number): Observable<any> {
+    return this._http.delete(`${this.myAppUrl}${this.myApiUrlP}${id}`);
+  }
+
+  //Artist
+
+  getArtists(): Observable<Artist[]> {
+    return this._http.get<Artist[]>(`${this.myAppUrl}${this.myApiUrlA}`);
+  }
+
+  getCreUpdA(id?: number): Observable<any> {
+    let path = `${this.myAppUrl}${this.myApiUrlA}createUpdate/`;
+    if (id != undefined && id != 0) {
+      path += `${id}`
+    }
+    return this._http.get(path);
+  }
+
+  crePostA(id?: number, formData?: FormData) : Observable<any> {
+    let path = `${this.myAppUrl}${this.myApiUrlA}createUpdate/`;
+    if (id != undefined && id != 0) {
+      path += `${id}`
+    }
+    return this._http.post(path, formData);
+  }
+
+  delArtist(id: number): Observable<any> {
+    return this._http.delete(`${this.myAppUrl}${this.myApiUrlA}${id}`);
+  }
+
 }
