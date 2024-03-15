@@ -1,1 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+//Work Sans
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+//VARIABLES
+$background-primary: #2B2B2B;
+$background-secondary: #3B3B3B;
+$color-caption-label-text: #858584;
+$color-text: #FFFFFF;
+$color-action: #A259FF;
+$color-blue: #377DF7;
+$color-red: #FF7262;
+$fradient-1: linear-gradient(100.92deg, #A259FF 13.57%, #FF6250 97.65%);
+$gradient-2: linear-gradient(128.15deg, #A259FF 49.75%, #377DF7 136.56%);
+
+$h1-work-sans: normal 600 67px/67px "Work Sans";
+$h2-work-sans: normal 600 51px/51px "Work Sans";
+$h3-work-sans: normal 600 38px/38px "Work Sans";
+$h4-work-sans: normal 600 28px/28px "Work Sans";
+$h5-work-sans: normal 600 22px/22px "Work Sans";
+$base-work-sans: normal normal 16px/16px "Work Sans";
+$caption-work-sans: normal normal 16px/16px "Work Sans";
+$body-work-sans: normal normal 22px/22px "Work Sans";
+
+
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  color:$color-text;
+  
+}
+
+///STYLES OF TABLES
+.admin-table {
+  height: 100vh;
+  background-color: $background-primary;
+
+  &--titlecontainer {
+    height: 130px;
+    display: flex;
+  }
+
+  &--titleprincipal {
+    font: $h1-work-sans;
+    text-align: center;
+    margin: auto;
+  }
+
+  &--tablematerial {
+    width: 60%;
+    margin: auto;
+  }
+
+  &--table {
+    padding: 30px;
+    border-radius: 30px;
+  }
+
+  &--icon-edit {
+    cursor: pointer;
+    margin-right: 15px;
+    margin-left: 50px;
+    color: $color-blue;
+  }
+
+  &--icon-trash {
+    cursor: pointer;
+    color: $color-red;
+  }
+
+  &--table-column{
+      width:10% !important;
+      text-align: center;    
+  }
+}
+
+th {
+  font-weight: 700 !important;
+}
+
+th.mat-mdc-header-cell {
+ 
+}
+
+mat-paginator.mat-mdc-paginator {
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+///STYLES OF FORMS
+
+.admin-form {
+  background-color: $background-primary;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  &--container {
+    background: $background-secondary;
+    width: 50%;
+    border-radius: 30px;
+    border: 10px solid $color-text;
+  }
+
+  &--title-container {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--title-principal {
+    font: $h2-work-sans;
+    margin: 0;
+  }
+
+  &--form-container {
+    text-align: center;
+  }
+
+  &--form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px 150px;
+  }
+
+  &--form-grid {
+    width: 100%;
+  }
+
+  &--image {
+    background: url("https://s3nft.s3.us-east-2.amazonaws.com/Banner-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
