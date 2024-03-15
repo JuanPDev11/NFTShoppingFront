@@ -1,0 +1,48 @@
+<div class="admin-form">
+  <div class="admin-form--container">
+
+    <mat-grid-list cols="3" rowHeight="500px">
+      <mat-grid-tile class="admin-form--image">
+        
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <div class="admin-form--form-grid">
+          <div class="admin-form--title-container">
+            <h2 class="admin-form--title-principal" *ngIf="category1?.data;else createtitle"> {{'Update'}} Category</h2>
+          </div>
+          <div class="admin-form--form-container">
+            <form class="admin-form--form" [formGroup]="form1" (ngSubmit)="submit()">
+              
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input class="admin-form--input" matInput name="nombre" [(ngModel)]="categoryName" formControlName="name">
+              </mat-form-field>
+
+
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Display Order</mat-label>
+                <input type="number" matInput name="displayOrder" [(ngModel)]="categoryDisplay" formControlName="displayOrder">
+              </mat-form-field>
+
+              <button type="submit" *ngIf="category1?.data;else createbutton" routerLink="/createUpdate/{{category1.data.id}}" class="admin-table--button" mat-fab extended color="primary">{{'Update'}} Category</button>
+            </form>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    
+  </div>
+</div>
+
+<ng-template #createtitle>
+  <h1 class="admin-form--title-principal">Create Category</h1>
+</ng-template>
+<ng-template #createbutton>
+  <button  type="submit" routerLink="/createUpdate/" class="admin-table--button" mat-fab extended color="primary">Create Category</button>
+</ng-template>
+
+
+
+<!--[(ngModel)]="categoryData[1]"-->

@@ -1,0 +1,79 @@
+<div class="admin-form">
+  <div class="admin-form--container">
+
+    <mat-grid-list cols="3" rowHeight="500px">
+      <mat-grid-tile class="admin-form--image">
+
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <div class="admin-form--form-grid">
+          <div class="admin-form--title-container">
+            <h2 class="admin-form--title-principal" *ngIf="product2?.product;else createtitle"> {{'Update'}} Category</h2>
+          </div>
+          <div class="admin-form--form-container">
+            <form class="admin-form--form" [formGroup]="form2" (ngSubmit)="submit()">
+
+              <div class="admin-form--product">
+                
+              </div>
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input class="admin-form--input" matInput name="nombre2" [(ngModel)]="productName" formControlName="Name">
+              </mat-form-field>
+
+
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput name="description" [(ngModel)]="productDescription" formControlName="Description">
+              </mat-form-field>
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Price</mat-label>
+                <input type="number" matInput name="price" [(ngModel)]="productPrice" formControlName="Price">
+              </mat-form-field>
+
+              <div class="admin-form--input">
+                <label>Upload File</label>
+                <input type="file" name="file" formControlName="File">
+              </div>
+
+              <mat-form-field>
+                <mat-label>Select a category</mat-label>
+                <mat-select formControlName="Category">
+                  <mat-option *ngFor="let cat of product2?.categories" [value]="cat.id">{{cat.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Select a artist</mat-label>
+                <mat-select formControlName="Artist">
+                  <mat-option *ngFor="let cat of product2?.artists" [value]="cat.id">{{cat.name}}</mat-option>
+                  
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Bid</mat-label>
+                <input type="number" matInput name="displayOrder" [(ngModel)]="productBid" formControlName="Bid">
+              </mat-form-field>
+
+              <button type="submit" *ngIf="product2?.product;else createbutton" routerLink="/createUpdate/{{product2.product.id}}" class="admin-table--button" mat-fab extended color="primary">{{'Update'}} Category</button>
+            </form>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>
+
+<ng-template #createtitle>
+  <h1 class="admin-form--title-principal">Create Product</h1>
+</ng-template>
+<ng-template #createbutton>
+  <button type="submit" routerLink="/creUpd/" class="admin-table--button" mat-fab extended color="primary">Create Product</button>
+</ng-template>
+
+
