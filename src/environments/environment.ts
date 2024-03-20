@@ -1,4 +1,5 @@
 export const environment = {
-  production: false,
-  endpoint: 'https://localhost:7053/'
+  production: true,
+  endpoint: 'https://localhost:7053/',
+  userKey:'identityAppUser'
 }
