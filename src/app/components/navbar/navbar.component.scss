@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+
+.navbar {
+  background-color: $background-secondary;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--list {
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    color: $color-text;
+    list-style: none;
+  }
+
+  &--link {
+    color: $color-text;
+    text-decoration: none;
+    font: $h5-work-sans;
+    cursor: pointer;
+  }
+
+  &--account {
+    display: flex;
+    gap: 15px;
+    margin: 0 40px;
+    color: $color-text;
+    list-style: none;
+  }
+}
