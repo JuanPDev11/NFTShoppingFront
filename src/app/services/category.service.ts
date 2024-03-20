@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../interface/category';
 import { url } from 'node:inspector';
 import { Product } from '../interface/product';
 import { Artist } from '../interface/artists';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,15 @@ export class CategoryService {
   private myApiUrlA: string = 'api/Artist/';
 
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http:HttpClient, private _account:AccountService) { }
 
   //Category
   getCategories(): Observable<Category[]>{
-    return this._http.get<Category[]>(`${this.myAppUrl}${this.myApiUrl}`);
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + jwt);
+
+    return this._http.get<Category[]>(`${this.myAppUrl}${this.myApiUrl}`, {headers});
   }
 
   createUpdate(id?: number): Observable<Category> {
