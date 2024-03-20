@@ -4,8 +4,12 @@
     <li><a class="navbar--link" routerLink="/categoryIndex">Categories</a></li>
     <li><a class="navbar--link" routerLink="/artistIndex">Artists</a></li>
   </ul>
-  <ul class="navbar--account">
+  <ul class="navbar--account" *ngIf="(service.user$ | async) === null">
     <li><a class="navbar--link" routerLink="/account/register">Register</a></li>
     <li><a class="navbar--link" routerLink="/account/login">Login</a></li>
+  </ul>
+  <ul class="navbar--account" *ngIf="(service.user$ | async) as user">
+    <li><span>Hi {{user.name | titlecase}}</span></li>
+    <li><a class="navbar--link" (click)="logout()">Logout</a></li>
   </ul>
 </nav>
