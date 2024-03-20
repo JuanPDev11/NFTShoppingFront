@@ -1,0 +1,44 @@
+<div class="admin-form">
+  <div class="admin-form--container">
+
+    <mat-grid-list cols="3" rowHeight="100%">
+      <mat-grid-tile class="admin-form--image">
+
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <div class="admin-form--form-grid">
+          <div class="admin-form--title-container">
+            <h2 class="admin-form--title-principal"> Sign In</h2>
+          </div>
+          <div class="admin-form--form-container">
+            <form class="admin-form--form" [formGroup]="formLogin" (ngSubmit)="submit()" autocomplete="off">
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>UserName (Email)</mat-label>
+                <input matInput formControlName="UserName"
+                       [class.is-invalid]="submitted && formLogin.get('UserName')?.errors">
+                <span *ngIf="submitted && formLogin.get('UserName')?.hasError('required')">
+                  The userName is required 
+                </span>
+              </mat-form-field>
+
+              <mat-form-field class="admin-form--input" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="Password">
+              </mat-form-field>
+
+              <button type="submit" class="admin-table--button" mat-fab extended color="primary">Login</button>
+
+              <div *ngIf="errorMessages.length > 0">
+                <app-validation-messages [errorMessages]="errorMessages"></app-validation-messages>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>
+
+
