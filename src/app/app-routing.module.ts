@@ -9,16 +9,16 @@ import { GetArtistComponent } from './components/get-artist/GetArtistComponent';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { roleGuardGuard } from './guards/role-guard.guard';
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
   {
-    path: '',
+    path: 'categoryIndex',
+    component : GetCategoriesComponent,
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthorizationGuard],
-    children: [
-      {path:'categoryIndex',component: GetCategoriesComponent}
-    ]
+    canActivate: [roleGuardGuard],
+    data: {expectedRole: 'Admin'},
   },
   /*{ path: 'categoryIndex', component: GetCategoriesComponent },*/
   { path: 'createUpdate', component: CreateUpdateComponent },
