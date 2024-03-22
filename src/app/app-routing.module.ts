@@ -6,10 +6,21 @@ import { CreateUpdateProductComponent } from './components/create-update-product
 import { GetProductComponent } from './components/get-product/get-product.component';
 import { ArtistCreupComponent } from './components/artist-creup/artist-creup.component';
 import { GetArtistComponent } from './components/get-artist/GetArtistComponent';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthorizationGuard } from './guards/authorization.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'categoryIndex', pathMatch: 'full' },
-  { path: 'categoryIndex', component: GetCategoriesComponent },
+  { path: '', component:HomeComponent },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthorizationGuard],
+    children: [
+      {path:'categoryIndex',component: GetCategoriesComponent}
+    ]
+  },
+  /*{ path: 'categoryIndex', component: GetCategoriesComponent },*/
   { path: 'createUpdate', component: CreateUpdateComponent },
   { path: 'createUpdate/:id', component: CreateUpdateComponent },
   { path: 'productIndex', component: GetProductComponent },
@@ -18,8 +29,9 @@ const routes: Routes = [
   { path: 'artistCreUpd', component: ArtistCreupComponent},
   { path: 'artistCreUpd/:id', component: ArtistCreupComponent },
   { path: 'artistIndex', component: GetArtistComponent},
-
-  { path:'**', redirectTo: 'categoryIndex' , pathMatch:'full'}
+  { path: 'account', loadChildren: () => import('./account/account.module').then(module => module.AccountModule)},
+  { path: 'not-found',component:NotFoundComponent},
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
