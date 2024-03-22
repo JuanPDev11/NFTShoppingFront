@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppModule } from '../app.module';
 import { ValidationMessagesComponent } from '../components/errors/validation-messages/validation-messages.component';
 import { AccountService } from '../services/account.service';
+import { ComfirmEmailComponent } from './comfirm-email/comfirm-email.component';
 
 
 
@@ -16,7 +17,8 @@ import { AccountService } from '../services/account.service';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    ComfirmEmailComponent
   ],
   imports: [
     CommonModule,
