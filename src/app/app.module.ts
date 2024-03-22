@@ -12,6 +12,14 @@ import { GetProductComponent } from './components/get-product/get-product.compon
 import { CreateUpdateProductComponent } from './components/create-update-product/create-update-product.component';
 import { GetArtistComponent } from './components/get-artist/GetArtistComponent';
 import { ArtistCreupComponent } from './components/artist-creup/artist-creup.component';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+/*import { ValidationMessagesComponent } from './components/errors/validation-messages/validation-messages.component';*/
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,13 +29,20 @@ import { ArtistCreupComponent } from './components/artist-creup/artist-creup.com
     GetProductComponent,
     CreateUpdateProductComponent,
     GetArtistComponent,
-    ArtistCreupComponent
+    ArtistCreupComponent,
+    NotFoundComponent,
+    
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    
   ],
+  
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
