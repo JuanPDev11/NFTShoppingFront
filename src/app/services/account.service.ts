@@ -7,6 +7,8 @@ import { User } from '../interface/user';
 import { ReplaySubject, map, of } from 'rxjs';
 import { env } from 'process';
 import { Router } from '@angular/router';
+import { decode } from 'jsonwebtoken';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,7 @@ export class AccountService {
       map((user: User) => {
         if (user) {
           this.setUser(user);
+          
         }
       })
     );
@@ -56,6 +59,11 @@ export class AccountService {
   }
 
 
+  confirmEmail(userId:string,token:string) {
+    return this._http.get(`${this.myApiUrl}api/account?userId=${userId}&token=${token}`);
+  }
+
+
    getJWT()  {
     
 
@@ -63,6 +71,9 @@ export class AccountService {
 
       if (key) {
         const user: User = JSON.parse(key);
+        
+        
+        
         return user.jwt;
       } else {
         return null;
@@ -75,6 +86,7 @@ export class AccountService {
     localStorage.setItem(environment.userKey, JSON.stringify(user));
     this.userSource.next(user);
   }
+
 
 
 }

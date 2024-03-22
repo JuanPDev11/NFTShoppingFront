@@ -7,7 +7,7 @@ import { GetCategoriesComponent } from './components/get-categories/get-categori
 import { CreateUpdateComponent } from './components/create-update/create-update.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SharedModule } from './shared/shared.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { GetProductComponent } from './components/get-product/get-product.component';
 import { CreateUpdateProductComponent } from './components/create-update-product/create-update-product.component';
 import { GetArtistComponent } from './components/get-artist/GetArtistComponent';
@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/errors/not-found/not-found.compo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { jwtInterceptor } from './interceptors/jwt.interceptor';
 
 
 
@@ -46,7 +47,8 @@ import { HomeComponent } from './components/home/home.component';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    {provide: HTTP_INTERCEPTORS, useClass: jwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
