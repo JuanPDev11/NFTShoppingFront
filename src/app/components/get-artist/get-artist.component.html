@@ -23,7 +23,7 @@
 
           <ng-container matColumnDef="Description">
             <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Description </th>
-            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.description}} </td>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{truncateText(element.description,15)}} </td>
           </ng-container>
 
 
