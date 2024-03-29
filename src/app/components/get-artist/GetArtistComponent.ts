@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CategoryService } from '../../services/category.service';
 import Swal from 'sweetalert2';
+import { max } from 'rxjs';
 
 
 @Component({
@@ -33,6 +34,14 @@ export class GetArtistComponent implements AfterViewInit, OnInit {
     this._service.getArtists().subscribe(data => {
       this.dataSource.data = data;
     })
+  }
+
+  truncateText(text: string, maxlength: number): string {
+    if (text.length <= maxlength) {
+      return text;
+    } else {
+      return text.substring(0, maxlength) + ' ...';
+    }
   }
 
   RemoveArtist(id: number) {
