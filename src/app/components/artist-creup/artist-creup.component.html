@@ -50,8 +50,8 @@
 
                 <mat-grid-tile colspan="2">
                   <div class="admin-form--input admin-form--input-file">
-                    <label class="admin-form--input-file-s" type="file">
-                      Upload File
+                    <label  class="admin-form--input-file-s" type="file">                   
+                      <span *ngIf="file1;else uploadFileT" >{{file1.name}}</span>
                       <input (change)="uploadFile($event)" type="file" class="admin-form--input-file-s-off" style="display:none;" name="file">
                     </label>
                   </div>
@@ -92,4 +92,7 @@
 </ng-template>
 <ng-template #createbutton>
   <button type="submit" routerLink="/artistCreUpd/" class="admin-table--button" mat-fab extended color="primary">Create Artist</button>
+</ng-template>
+<ng-template #uploadFileT>
+  Upload File
 </ng-template>
