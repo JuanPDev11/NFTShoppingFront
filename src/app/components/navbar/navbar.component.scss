@@ -7,6 +7,18 @@
   align-items: center;
   justify-content: space-between;
 
+  &--title{
+      color:$color-text ;
+      margin: 0 0 0 40px;
+      font:$h5-work-sans;
+      
+
+      &-icon{
+          color:$color-action;
+          font-size:25px;
+      }
+  }
+
   &--list {
     display: flex;
     gap: 15px;
@@ -18,15 +30,36 @@
   &--link {
     color: $color-text;
     text-decoration: none;
-    font: $h5-work-sans;
+    font: $base-work-sans ;
     cursor: pointer;
+  }
+
+  &--links{
+      display:flex;
+      gap:15px;
+      align-items:center;
   }
 
   &--account {
     display: flex;
+    align-items: center;
     gap: 15px;
-    margin: 0 40px;
+    margin: 0 40px 0 0;
     color: $color-text;
     list-style: none;
+    padding:0;
+
+    &-hi{
+        font:$h5-work-sans;
+        color:$color-action;
+        font-weight: bold;
+        margin-left:50px;
+    }
   }
+
+
+}
+
+span.mdc-button__label {
+  font-size: $h5-work-sans !important;
 }
