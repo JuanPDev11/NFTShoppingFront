@@ -102,4 +102,9 @@ export class CategoryService {
     return this._http.delete(`${this.myAppUrl}${this.myApiUrlA}${id}`);
   }
 
+  //FOR HOME
+  homeCategories() :Observable<any>{
+    return this._http.get(`${this.myAppUrl}${this.myApiUrl}forHome`);
+  }
+
 }
