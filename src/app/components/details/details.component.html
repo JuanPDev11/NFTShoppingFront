@@ -1,0 +1,91 @@
+<section class="section-details">
+  <div class="details">
+    <img class="details--img" src="https://s3nft.s3.us-east-2.amazonaws.com/Banner-details.png" />
+    <div class="details--container" *ngIf="product">
+      <div class="details--container-info">
+        <div class="details--container-info-texts">
+          <h2 class="details--container-info-texts-title">{{product.name}}</h2>
+          <h3 class="details--container-info-texts-date">Minted On Apr 1, 2024</h3>
+          <h3 class="details--container-info-texts-labels">Created By</h3>
+          <div class="details--container-info-texts-artist">
+            <img class="details--container-info-texts-artist-img" src={{product.artistData.imageUrl}}>
+            <h3 class="details--container-info-texts-artist-name">{{product.artistData.name}}</h3>
+          </div>
+          <h3 class="details--container-info-texts-labels">Description</h3>
+          <h3 class="details--container-info-texts-description">
+            {{product.description}}
+            There are all sorts of beings in the NFT Universe. The most advanced and friendly of the bunch are Orbitians.               They live in a metal space machines, high up in the sky and only have one foot on Earth.
+            These Orbitians are a peaceful race, but they have been at war with a group of invaders for many generations. The invaders are called Upside-Downs, because of their inverted bodies that live on the ground, yet do not know any other way to be. Upside-Downs believe that they will be able to win this war if they could only get an eye into Orbitian territory, so they've taken to make human beings their target.
+          </h3>
+          <h3 class="details--container-info-texts-labels">Details</h3>
+          <h3 class="details--container-info-texts-global"><i class="details--container-info-texts-labels bi bi-globe"></i> View on Etherscan</h3>
+          <h3 class="details--container-info-texts-global"><i class="details--container-info-texts-labels bi bi-globe"></i> View Original</h3>
+          <h3 class="details--container-info-texts-labels">Tags</h3>
+          <div class="details--container-info-texts-tags-container">
+            <h3 class="details--container-info-texts-tags-container-tag">ANIMATION</h3>
+            <h3 class="details--container-info-texts-tags-container-tag">ILLUSTRATION</h3>
+            <h3 class="details--container-info-texts-tags-container-tag">MOON</h3>
+          </div>
+        </div>
+        <div class="details--container-info-card">
+          <div class="discover--container-card">
+            <div class="discover--container-card-container-img">
+              <img class="discover--container-card-container-img-file" src={{product.imageUrl}} />
+            </div>
+            <div class="discover--container-card-container-texts">
+              <h2 class="discover--container-card-container-texts-namepr">{{product.name}}</h2>
+              <div class="discover--container-card-container-texts-artist-container">
+                <img class="discover--container-card-container-texts-artist-container-img" src={{product.artistData.imageUrl}} />
+                <h2 class="discover--container-card-container-texts-artist-container-name">{{product.artistData.name}}</h2>
+              </div>
+              <div class="discover--container-card-container-texts-info-container">
+                <div>
+                  <h2 class="discover--container-card-container-texts-info-container-title">Price</h2>
+                  <h2 class="discover--container-card-container-texts-info-container-price">{{product.price}}.63 ETH</h2>
+                </div>
+                <div>
+                  <h2 class="discover--container-card-container-texts-info-container-title">Highest Bid</h2>
+                  <h2 class="discover--container-card-container-texts-info-container-price">{{product.bid}}.33 ETH</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details--container-cards">
+        <div class="details--container-cards-texts">
+          <h2 class="details--container-cards-texts-title">More From This Artist</h2>
+          <button class="details--container-button top--title-container-button" routerLink="/creator/{{product.artistId}}" mat-fab extended color="primary">
+            <i class="top--title-container-button-icon bi bi-arrow-right"></i> Go To Artist Page
+          </button>
+        </div>
+        <div class="creator--cards">
+          <div class="discover--container creator--cards-container">
+            <div class="discover--container-card" *ngFor="let product of products">
+              <div class="discover--container-card-container-img">
+                <img class="discover--container-card-container-img-file" src={{product.imageUrl}} />
+              </div>
+              <div class="discover--container-card-container-texts creator--cards-texts">
+                <h2 class="discover--container-card-container-texts-namepr">{{product.name}}</h2>
+                <div class="discover--container-card-container-texts-artist-container">
+                  <img class="discover--container-card-container-texts-artist-container-img" src={{product.artistData.imageUrl}} />
+                  <h2 class="discover--container-card-container-texts-artist-container-name">{{product.artistData.name}}</h2>
+                </div>
+                <div class="discover--container-card-container-texts-info-container ">
+                  <div>
+                    <h2 class="discover--container-card-container-texts-info-container-title">Price</h2>
+                    <h2 class="discover--container-card-container-texts-info-container-price">{{product.price}}.89 ETH</h2>
+                  </div>
+                  <div>
+                    <h2 class="discover--container-card-container-texts-info-container-title">Highest Bid</h2>
+                    <h2 class="discover--container-card-container-texts-info-container-price">{{product.bid}}.22 wETH</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
