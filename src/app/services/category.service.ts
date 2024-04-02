@@ -107,4 +107,14 @@ export class CategoryService {
     return this._http.get(`${this.myAppUrl}${this.myApiUrl}forHome`);
   }
 
+  //FOR CREATOR
+  getCreator(id: number):Observable<any> {
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlA}creator/${id}`);
+  }
+
+  //FOR DETAILS
+  getInfo(id:number): Observable<any> {
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlA}details/${id}`)
+  }
+
 }
