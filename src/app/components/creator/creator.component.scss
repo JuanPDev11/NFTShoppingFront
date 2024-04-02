@@ -1,0 +1,118 @@
+@import "../../../styles.scss";
+@import "../home/home.component.scss";
+
+.creator {
+  color: $color-text;
+
+
+
+  &--img {
+    width: 100%;
+  }
+
+  &--container {
+    width: 80%;
+    margin: auto;
+
+    &-img {
+      margin-top: -65px;
+    }
+
+    &-info {
+      display: flex;
+      justify-content: space-between;
+
+      &-texts {
+        width: 50%;
+
+        &-name {
+          font: $h2-work-sans;
+        }
+
+        &-bio {
+
+          &-title {
+            color: $color-caption-label-text;
+          }
+
+          &-description {
+            font: $body-work-sans;
+            line-height: 150%;
+          }
+        }
+
+        &-statics {
+          display: flex;
+          gap: 100px;
+
+          &-data {
+            font: $h4-work-sans;
+          }
+
+          &-title {
+            font: $body-work-sans;
+            font-weight: 400;
+          }
+        }
+
+        &-links {
+
+          &-title {
+            color: $color-caption-label-text;
+          }
+
+          &-container {
+            display: flex;
+            gap: 25px;
+
+            &-link {
+              font-size: 30px;
+              color: $color-caption-label-text;
+            }
+          }
+        }
+      }
+
+      &-action {
+        display: flex;
+        justify-content: end;
+        width: 50%;
+      }
+    }
+  }
+
+  &--created{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+
+      &-text{
+          font: $h5-work-sans;
+      }
+
+      &-span{
+          display: inline-block;
+          width: 50px;
+          padding: 10px;
+          background: $color-caption-label-text;
+          border-radius: 40px;
+          font: $base-work-sans;
+          text-align: center;
+          margin-left: 20px;
+      }
+  }
+
+  &--cards {
+    background: $background-secondary;
+
+    &-container {
+      width: 80%;
+      margin: auto;
+    }
+
+    &-texts {
+      background-color: $background-primary;
+    }
+  }
+}

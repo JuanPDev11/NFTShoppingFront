@@ -1,0 +1,80 @@
+<section class="section-creator">
+  <div class="creator" *ngIf="data">
+    <img class="creator--img" src="https://s3nft.s3.us-east-2.amazonaws.com/Banner-creator.png"/>
+    <div class="creator--container" >
+      <img class="creator--container-img" src="{{data.artistData.imageUrl}}"/>
+      <div class="creator--container-info">
+        <div class="creator--container-info-texts">
+          <div>
+            <h2 class="creator--container-info-texts-name">{{data.artistData.name}}</h2>
+          </div>
+          <div class="creator--container-info-texts-statics">
+            <div>
+              <h3 class="creator--container-info-texts-statics-data">{{data.artistData.volume}}K+</h3>
+              <h2 class="creator--container-info-texts-statics-title">Volume</h2>
+            </div>
+            <div>
+              <h3 class="creator--container-info-texts-statics-data">{{data.artistData.totalSold}}+</h3>
+              <h2 class="creator--container-info-texts-statics-title">NFTs Sold</h2>
+            </div>
+            <div>
+              <h3 class="creator--container-info-texts-statics-data">{{data.artistData.followers}}+</h3>
+              <h2 class="creator--container-info-texts-statics-title">Followers</h2>
+            </div>
+          </div>
+          <div class="creator--container-info-texts-bio">
+            <h2 class="creator--container-info-texts-bio-title">Bio</h2>
+            <h2 class="creator--container-info-texts-bio-description">{{data.artistData.description}}</h2>
+          </div>
+          <div class="creator--container-info-texts-links">
+            <h3 class="creator--container-info-texts-links-title">Links</h3>
+            <div class="creator--container-info-texts-links-container">
+              <i class="creator--container-info-texts-links-container-link bi bi-discord"></i>
+              <i class="creator--container-info-texts-links-container-link bi bi-youtube"></i>
+              <i class="creator--container-info-texts-links-container-link bi bi-twitter"></i>
+              <i class="creator--container-info-texts-links-container-link bi bi-instagram"></i>
+            </div>
+          </div>
+
+        </div>
+        <div class="creator--container-info-action">
+          <button class="top--title-container-button" mat-fab extended color="primary">
+            <i class="top--title-container-button-icon bi bi-plus-lg"></i> Follow
+          </button>
+        </div>
+      </div>
+      
+    </div>
+    <hr />
+    <div class="creator--created" >
+      <h2 class="creator--created-text">Created<span class="creator--created-span">{{data.products.length}}</span></h2>
+    </div>
+
+    <div class="creator--cards">
+      <div class="discover--container creator--cards-container">
+        <div class="discover--container-card" *ngFor="let product of data.products">
+          <div class="discover--container-card-container-img">
+            <img class="discover--container-card-container-img-file" src={{product.imageUrl}} />
+          </div>
+          <div class="discover--container-card-container-texts creator--cards-texts">
+            <h2 class="discover--container-card-container-texts-namepr">{{product.name}}</h2>
+            <div class="discover--container-card-container-texts-artist-container">
+              <img class="discover--container-card-container-texts-artist-container-img" src={{product.artistData.imageUrl}} />
+              <h2 class="discover--container-card-container-texts-artist-container-name">{{product.artistData.name}}</h2>
+            </div>
+            <div class="discover--container-card-container-texts-info-container ">
+              <div>
+                <h2 class="discover--container-card-container-texts-info-container-title">Price</h2>
+                <h2 class="discover--container-card-container-texts-info-container-price">{{product.price}}.89 ETH</h2>
+              </div>
+              <div>
+                <h2 class="discover--container-card-container-texts-info-container-title">Highest Bid</h2>
+                <h2 class="discover--container-card-container-texts-info-container-price">{{product.bid}}.22 wETH</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>
