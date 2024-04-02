@@ -24,8 +24,9 @@ export class HomeComponent implements OnInit {
 
   getInfo() {
     this._serviceI.getProduct().subscribe({
-      next: (info:any[]) => {
-        this.info = info.slice(0,12);
+      next: (info: any[]) => {
+        this.info = info.slice(0, 12);
+        console.log(this.info);
       }
     })
   }
@@ -33,11 +34,12 @@ export class HomeComponent implements OnInit {
   getCategories() {
     this._serviceI.homeCategories().subscribe({
       next: (response) => {
-        console.log(response);
         this.categories = response;
       }
     })
   }
+
+  
 
 
 
