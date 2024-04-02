@@ -184,14 +184,43 @@ mat-paginator.mat-mdc-paginator {
 }
 
 
-.section-banner{
-    
+.section-banner {
+  width: 80%;
+  margin: auto;
 }
 
 .section-top {
+  margin: 200px auto 100px;
+  width: 80%;
+  
+}
+
+.section-categories {
+  margin: 200px auto 100px;
+  width: 80%;
+  
+}
+
+.section-discover {
+  margin: 200px auto 100px;
+  width: 80%;
+  
+}
+
+.section-highlight {
   margin: 200px 0 100px 0;
 }
 
-.section-categories{
-    margin: 200px 0 100px 0;
+.section-works{
+    width: 80%;
+    margin: 0px auto 100px;
+}
+
+.section-weekly {
+  width: 80%;
+  margin: 0px auto 100px;
+}
+
+.section-creator{
+    
 }
