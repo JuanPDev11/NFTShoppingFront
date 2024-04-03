@@ -1,1 +1,193 @@
-<p>home works!</p>
+<div class="home">
+  <!--BANNER PRINCIPAL-->
+  <section class="section-banner">
+    <div class="home--container">
+      <div class="home--banner-principal">
+        <div class="home--banner-principal-texts">
+          <h1 class="home--banner-principal-texts-title">Discover digital art & Collect NFTs</h1>
+          <h2 class="home--banner-principal-texts-paragraph">NFT marketplace UI created with Anima for Figma. Collect, buy and sell art from more than 20k NFT artists.</h2>
+          <button class="home--banner-principal-texts-button" mat-fab extended color="primary">
+            <i class="home--banner-principal-texts-button-icon bi bi-rocket-takeoff"></i> Get Started
+          </button>
+          <div class="home--banner-principal-texts-statics">
+            <div>
+              <h2 class="home--banner-principal-texts-statics-text-1">240K+</h2>
+              <h2 class="home--banner-principal-texts-statics-text-2">Total Sale</h2>
+            </div>
+            <div>
+              <h2 class="home--banner-principal-texts-statics-text-1">100K+</h2>
+              <h2 class="home--banner-principal-texts-statics-text-2">Auctions</h2>
+            </div>
+            <div>
+              <h2 class="home--banner-principal-texts-statics-text-1">240K+</h2>
+              <h2 class="home--banner-principal-texts-statics-text-2">Artists</h2>
+            </div>
+          </div>
+        </div>
+        <div class="home--banner-principal-card">
+          <div class="home--banner-principal-card-img-container">
+            <img class="home--banner-principal-card-img-container-img" src="https://s3nft.s3.us-east-2.amazonaws.com/Banner-home.png" />
+          </div>
+          <div class="home--banner-principal-card-text">
+            <h2 class="home--banner-principal-card-text-title">Space Walking</h2>
+            <div class="home--banner-principal-card-text-info">
+              <img class="home--banner-principal-card-text-img" src="https://s3nft.s3.us-east-2.amazonaws.com/Artist-Avatar-01.svg" />
+              <h2 class="home--banner-principal-card-text-name">Murakami</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--TOP CREATORS-->
+  <section class="section-top">
+    <div class="top--title-container">
+      <div class="top--title-container-texts">
+        <h2 class="top--title-container-title">Top Creators</h2>
+        <h3 class="top--title-container-paragraph">Checkout Top Rated Creators on the NFT Marketplace</h3>
+      </div>
+      <div class="top--title-container-action">
+        <button routerLink="ranking" class="top--title-container-button"  mat-fab extended color="primary">
+          <i class="top--title-container-button-icon bi bi-rocket-takeoff"></i> View Rankings
+        </button>
+      </div>
+    </div>
+    <div class="top">
+      <div class="top--container">
+        <div class="top--container-card" *ngFor="let product of info">
+          <img class="top--container-card-img" routerLink="creator/{{product.artistId}}" src={{product.artistData.imageUrl}} />
+          <h2 class="top--container-card-name">{{product.artistData.name}}</h2>
+          <h2 class="top--container-card-sold">Total Sales: {{product.artistData.totalSold}} ETH</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--BROWSE CATEGORIES-->
+  <section class="section-categories">
+    <div class="categories--title-container">
+      <h2 class="categories--title-container-title">Browse Categories</h2>
+    </div>
+    <div class="categories">
+      <div class="categories--container">
+        <div class="categories--container-card" *ngFor="let cat of categories">
+          <img class="categories--container-card-img" src={{cat.imageUrl}} />
+          <div class="categories--container-card-text">
+            <h2 class="categories--container-card-name">{{cat.name}}</h2>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--DISCOVER NFTs-->
+  <section class="section-discover">
+    <div class="discover">
+      <div class="discover--title-container">
+        <div class="discover--title-container-texts">
+          <h2 class="discover--title-container-texts-title">Discover More NFTs</h2>
+          <h3 class="discover--title-container-texts-paragraph">Explore new trending NFTs</h3>
+        </div>
+        <div class="discover--title-container-action">
+          <button class="discover--title-container-action-button" mat-fab extended color="primary">
+            <i class="discover--title-container-action-button-icon bi bi-eye"></i> See All
+          </button>
+        </div>
+      </div>
+      <div class="discover--container">
+        <div  class="discover--container-card" routerLink="details/{{$any(product).id}}" *ngFor="let product of info | slice:0:3">
+          <div class="discover--container-card-container-img">
+            <img class="discover--container-card-container-img-file" src={{$any(product).imageUrl}} />
+          </div>
+          <div class="discover--container-card-container-texts">
+            <h2 class="discover--container-card-container-texts-namepr">{{$any(product).name}}</h2>
+            <div class="discover--container-card-container-texts-artist-container">
+              <img class="discover--container-card-container-texts-artist-container-img" src={{$any(product).artistData.imageUrl}} />
+              <h2 class="discover--container-card-container-texts-artist-container-name">{{$any(product).artistData.name}}</h2>
+            </div>
+            <div class="discover--container-card-container-texts-info-container">
+              <div>
+                <h2 class="discover--container-card-container-texts-info-container-title">Price</h2>
+                <h2 class="discover--container-card-container-texts-info-container-price">{{$any(product).price}}.63 ETH</h2>
+              </div>
+              <div>
+                <h2 class="discover--container-card-container-texts-info-container-title">Highest Bid</h2>
+                <h2 class="discover--container-card-container-texts-info-container-price">{{$any(product).bid}}.33 ETH</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--HIGHLIGHT-->
+  <section class="section-highlight">
+    <img class="highlight" src="https://s3nft.s3.us-east-2.amazonaws.com/Highlight.png" />
+  </section>
+  <!--HIGHLIGHT-->
+  <section class="section-works">
+    <div class="works">
+      <div class="works--container">
+        <div class="works--container-texts">
+          <h2 class="works--container-texts-title">How It Works</h2>
+          <h3 class="works--container-texts-paragraph">Find Out To Get Started</h3>
+        </div>
+        <div class="works--container-cards">
+          <div class="works--container-cards-card">
+            <div class="works--container-cards-card-media">
+              <img class="works--container-cards-card-media-img" src="https://s3nft.s3.us-east-2.amazonaws.com/works-wallet.png" />
+            </div>
+            <div class="works--container-cards-card-texts">
+              <h3 class="works--container-cards-card-texts-title">Setup Your wallet</h3>
+              <p class="works--container-cards-card-texts-paragraph">Set up your wallet of choice. Connect it to the Animarket by clicking the wallet icon in the top right corner.</p>
+            </div>
+          </div>
+          <div class="works--container-cards-card">
+            <div class="works--container-cards-card-media">
+              <img class="works--container-cards-card-media-img" src="https://s3nft.s3.us-east-2.amazonaws.com/works-collection.png" />
+            </div>
+            <div class="works--container-cards-card-texts">
+              <h3 class="works--container-cards-card-texts-title">Create Collection</h3>
+              <p class="works--container-cards-card-texts-paragraph">Upload your work and setup your collection. Add a description, social links and floor price.</p>
+            </div>
+          </div>
+          <div class="works--container-cards-card">
+            <div class="works--container-cards-card-media">
+              <img class="works--container-cards-card-media-img" src="https://s3nft.s3.us-east-2.amazonaws.com/works-earning.png" />
+            </div>
+            <div class="works--container-cards-card-texts">
+              <h3 class="works--container-cards-card-texts-title">Start Earning</h3>
+              <p class="works--container-cards-card-texts-paragraph">Choose between auctions and fixed-price listings. Start earning by selling your NFTs or trading others.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Weekly-->
+  <section class="section-weekly">
+    <div class="weekly">
+      <div class="weekly--media">
+        <img class="weekly--media-img" src="https://s3nft.s3.us-east-2.amazonaws.com/weekly.png"/>
+      </div>
+      <div class="weekly--form-container">
+        <form class="weekly--form-container-form">
+          <h2 class="weekly--form-container-form-title">Join our weekly digest</h2>
+          <h2 class="weekly--form-container-form-paragraph">Get exclusive promotions & updates straight to your inbox.</h2>
+          <div class="weekly--form-container-form-subscribe">
+            <mat-form-field class="weekly--form-container-form-field">
+              <mat-label class="weekly--form-container-form-label">Enter your email here</mat-label>
+              <input class="weekly--form-container-form-input" matInput>
+            </mat-form-field>
+            <button class="weekly--form-container-form-button" mat-fab extended color="primary">
+              <i class="weekly--form-container-form-button-icon bi bi-envelope"></i> Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</div>
