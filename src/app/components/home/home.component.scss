@@ -1,0 +1,481 @@
+@import "../../../styles.scss";
+
+
+
+.home {
+  margin: auto;
+  color: $color-text;
+
+
+  &--container {
+    padding: 100px 0 0 0;
+    margin: auto;
+    
+  }
+
+  &--banner-principal {
+    display: flex;
+    gap: 100px;
+
+    &-texts {
+      width: 45%;
+
+
+      &-title {
+        margin: 0;
+        font: $h1-work-sans;
+        max-width: 90%;
+        line-height: 110%;
+        font-size: 77px;
+      }
+
+      &-paragraph {
+        font: $body-work-sans;
+        line-height: 160%;
+        max-width: 90%;
+        font-size: 30px;
+      }
+
+      &-button {
+        font: $base-work-sans;
+        width: 30%;
+        height: 55px;
+
+        &-icon {
+          font-size: 20px;
+        }
+      }
+
+      &-statics {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+
+        &-text-1 {
+          font: $body-work-sans;
+          font-weight: bold;
+        }
+
+        &-text-2 {
+          font: $base-work-sans;
+        }
+      }
+    }
+
+    &-card {
+      width: 50%;
+
+
+      &-img-container {
+        height: 510px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+
+        &-img {
+          width: 100%;
+          height: 510px;
+        }
+      }
+
+      &-text {
+        background-color: $background-secondary;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        &-title {
+          font: $body-work-sans;
+          font-weight: bold;
+          margin: 0 0 0 20px;
+          padding-top: 10px;
+        }
+
+        &-img {
+          width: 40px;
+          margin-left: 20px;
+        }
+
+        &-name {
+          font: $body-work-sans;
+        }
+
+        &-info {
+          display: flex;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+//TOP CREATORS
+
+.top {
+
+  &--title-container {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      margin: 0;
+      font: $h2-work-sans;
+    }
+
+    &-paragraph {
+      font: $h4-work-sans;
+      font-weight: 400;
+      margin-bottom: 60px;
+    }
+
+    &-action {
+      text-align: right;
+      margin: auto 0;
+      width: 30%;
+    }
+
+    &-button {
+      width: 60%;
+      height: 60px;
+      background-color: $background-primary;
+      border: 2px solid $color-action;
+      font: $base-work-sans;
+
+      &-icon {
+          font-size: 20px;
+          color: $color-action;
+      }
+    }
+  }
+
+  &--container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+
+    &-card {
+      border-radius: 20px;
+      background-color: $background-secondary;
+      text-align: center;
+      padding: 30px 0;
+
+      &-img {
+      }
+
+      &-name {
+        font: $h4-work-sans;
+      }
+
+      &-sold {
+        font: $base-work-sans;
+      }
+    }
+  }
+}
+
+
+//CATEGORIES
+
+.categories {
+
+  &--title-container {
+
+    &-title {
+      font: $h2-work-sans;
+      margin-bottom: 55px;
+    }
+  }
+
+
+  &--container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+
+
+    &-card {
+      width: 320px;
+      transition: all .5s;
+
+      &:hover {
+        width: 330px;
+        transition: all .5s;
+      }
+
+      &-img {
+        width: 100%;
+        height: 360px;
+      }
+
+      &-name {
+        font: $h5-work-sans;
+        margin: -4px auto;
+        padding-top: 25px;
+      }
+
+      &-text {
+        background: $background-secondary;
+        text-align: center;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 70px;
+        transition: all .5s;
+
+        &:hover {
+          background: $color-action;
+          transition: all 1s;
+        }
+      }
+    }
+  }
+}
+
+
+//DISCOVER NFTs
+
+.discover {
+
+
+
+  &--title-container {
+    display: flex;
+    justify-content: space-between;
+
+    &-texts {
+
+      &-title {
+        font: $h2-work-sans;
+      }
+
+      &-paragraph {
+        font: $h4-work-sans;
+        font-weight: 400;
+      }
+    }
+
+    &-action {
+      text-align: right;
+      margin: auto 0;
+      width: 30%;
+
+      &-button {
+        width: 60%;
+        height: 60px;
+        background-color: $background-primary;
+        border: 2px solid $color-action;
+        font: $base-work-sans;
+
+        &-icon {
+          font-size: 20px;
+          color: $color-action;
+        }
+      }
+    }
+  }
+
+  &--container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 50px;
+
+    &-card {
+      border-radius: 20px;
+      padding: 30px 0;
+      transition: all .5s;
+      width: 450px;
+      cursor: pointer;
+
+      &:hover {
+        width: 465px;
+        transition: all .5s;
+      }
+
+      &-container-img {
+
+        &-file {
+          width: 100%;
+        }
+      }
+
+      &-container-texts {
+        background: $background-secondary;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        transition: all .5s;
+
+        &:hover {
+          background: $color-action;
+          transition: all 1s;
+        }
+
+        &-namepr {
+          font: $h5-work-sans;
+          margin: -5px 0 0 10px;
+          padding-top: 20px;
+        }
+
+        &-artist-container {
+          display: flex;
+          gap: 15px;
+          margin-left: 10px;
+
+          &-img {
+            width: 20px;
+          }
+
+          &-name {
+            font: $base-work-sans;
+          }
+        }
+
+        &-info-container {
+          display: flex;
+          justify-content: space-between;
+          margin: 0 15px;
+
+          &-title {
+            font: $base-work-sans;
+            color: #858584;
+          }
+
+          &-price {
+            font: $body-work-sans;
+          }
+        }
+      }
+    }
+  }
+}
+
+//HIGHLIGHTS
+.highlight{
+    width: 100%;
+    margin: 0 !important;
+}
+
+//WORKS
+
+.works {
+
+  &--container {
+
+    &-texts {
+
+      &-title {
+        font: $h2-work-sans;
+        margin: 0;
+      }
+
+      &-paragraph {
+        font: $h4-work-sans;
+        font-weight: 400;
+        margin: 20px 0 50px;
+      }
+    }
+
+    &-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 40px;
+
+      &-card {
+        background-color: $background-secondary;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 420px;
+
+        &-media {
+          margin: auto;
+
+          &-img {
+          }
+        }
+
+        &-texts {
+
+          &-title {
+            font: $body-work-sans;
+          }
+
+          &-paragraph {
+            font: $base-work-sans;
+            width: 70%;
+            margin: 0 auto 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//WEEKLY
+
+.weekly {
+  display: flex;
+  gap: 40px;
+  background: $background-secondary;
+  border-radius: 20px;
+  padding: 50px;
+
+
+  &--media {
+    width: 50%;
+    display: flex;
+    align-items: center;
+
+
+    &-img {
+      width: 90%;
+      height: 80%;
+    }
+  }
+
+  &--form-container {
+    width: 50%;
+    margin: auto;
+
+    &-form {
+
+
+      &-title {
+        font: $h2-work-sans;
+        margin: 0;
+        max-width: 70%;
+        line-height: 110%;
+      }
+
+      &-paragraph {
+        font: $h5-work-sans;
+        font-weight: 300;
+        line-height: 160%;
+        margin-bottom: 30px;
+        max-width: 80%;
+      }
+
+      &-subscribe {
+        display: flex;
+        align-items: start;
+      }
+
+      &-field {
+        width: 50%;
+      }
+
+      &-label {
+      }
+
+      &-input {
+      }
+
+      &-button {
+        width: 40%;
+        height: 56px;
+        margin-left: -50px;
+
+        &-icon {
+        }
+      }
+    }
+  }
+}

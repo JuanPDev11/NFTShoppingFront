@@ -1,5 +1,5 @@
 export interface Artist {
-  Name: number,
+  Name: string,
   ImageUrl: string,
   Description: string,
   Age: number,
