@@ -1,0 +1,37 @@
+<section class="section-ranking">
+  <div class="ranking ">
+    <div class="ranking--texts">
+      <h2 class="ranking--texts-title">Top Creators <i class="bi bi-globe-americas"></i></h2>
+      <h3 class="ranking--texts-paragraph">Check out top ranking NFT artists on the NFT Marketplace.</h3>
+      <div class="ranking--texts-field" >
+        <label class="ranking--texts-field-label"><i class="ranking--texts-field-label-icon bi bi-person-bounding-box"></i>  Search</label>
+        <input class="ranking--texts-field-input" [(ngModel)]="searchText" (ngModelChange)="onSearchChange($event)"
+                placeholder="Ex. Juan Lucumi" value="">
+      </div>
+    </div>
+    <div class="ranking--container" *ngIf="filters">
+      <div class="ranking--container-headers">
+        <h3 class="ranking--container-headers-header-artist">Artist</h3>
+        <h3 class="ranking--container-headers-header">Volume</h3>
+        <h3 class="ranking--container-headers-header">Followers</h3>
+        <h3 class="ranking--container-headers-header">Total Sold</h3>
+      </div>
+      <div class="ranking--container-cards" >
+        <div class="ranking--container-cards-no-result" *ngIf="filters.length <= 0">
+          <h2 class="ranking--container-cards-no-result-text">No results <i class="bi bi-person-fill-x"></i></h2>
+        </div>
+        <div class="ranking--container-cards-list">         
+            <div routerLink="/creator/{{artist.id}}" class="ranking--container-cards-list-item-container" *ngFor="let artist of filters">
+              <div class="ranking--container-cards-list-item-container-artist">
+                <img class="ranking--container-cards-list-item-container-img " src={{artist.imageUrl}} />
+                <h3 class="ranking--container-cards-list-item-container-name">{{artist.name}}</h3>
+              </div>
+              <h3 class="ranking--container-cards-list-item-container-text">{{artist.volume}}K+</h3>
+              <h3 class="ranking--container-cards-list-item-container-text">{{artist.followers}}+</h3>
+              <h3 class="ranking--container-cards-list-item-container-text">{{artist.totalSold}}<span class="ranking--green"> ETH +</span></h3>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
