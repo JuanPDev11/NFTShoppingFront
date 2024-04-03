@@ -1,0 +1,52 @@
+@import "../../../styles.scss";
+@import "../home/home.component.scss";
+
+.footers {
+  margin-top: auto;
+  color: $color-text;
+  background-color: $background-secondary;
+  height: 300px;
+
+  &--container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 75%;
+    margin: auto;
+  }
+
+  &--title {
+    font: $h5-work-sans;
+  }
+
+  &--texts {
+    font: $base-work-sans;
+    color: #cccccc;
+
+    &-finish {
+     width: 75%;
+     margin: auto;
+
+      &-juan {
+        font: $base-work-sans;
+        color: #cccccc;
+      }
+    }
+  }
+
+  &--icons {
+    display: flex;
+    gap: 10px;
+
+    &-icon {
+      font-size: 25px;
+    }
+  }
+
+  &--div-3{
+
+      &-input{
+          width: 100%;
+      }
+  }
+}
