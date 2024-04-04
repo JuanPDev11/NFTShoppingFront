@@ -61,7 +61,7 @@
         </div>
         <div class="creator--cards">
           <div class="discover--container creator--cards-container">
-            <div class="discover--container-card" *ngFor="let product of products">
+            <div (click)="redirect(product.id)" class="discover--container-card" *ngFor="let product of products">
               <div class="discover--container-card-container-img">
                 <img class="discover--container-card-container-img-file" src={{product.imageUrl}} />
               </div>
