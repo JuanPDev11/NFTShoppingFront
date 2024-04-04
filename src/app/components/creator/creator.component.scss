@@ -16,6 +16,7 @@
 
     &-img {
       margin-top: -65px;
+      width: 150px;
     }
 
     &-info {
@@ -27,12 +28,15 @@
 
         &-name {
           font: $h2-work-sans;
+          margin: 45px 0;
         }
 
         &-bio {
 
           &-title {
+            font: $body-work-sans;
             color: $color-caption-label-text;
+            margin-bottom: 20px;
           }
 
           &-description {
@@ -58,12 +62,14 @@
         &-links {
 
           &-title {
+            font: $body-work-sans;
             color: $color-caption-label-text;
           }
 
           &-container {
             display: flex;
             gap: 25px;
+            margin-bottom: 100px;
 
             &-link {
               font-size: 30px;
@@ -77,30 +83,31 @@
         display: flex;
         justify-content: end;
         width: 50%;
+        margin-top: 47px;
       }
     }
   }
 
-  &--created{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      
+  &--created {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      &-text{
-          font: $h5-work-sans;
-      }
 
-      &-span{
-          display: inline-block;
-          width: 50px;
-          padding: 10px;
-          background: $color-caption-label-text;
-          border-radius: 40px;
-          font: $base-work-sans;
-          text-align: center;
-          margin-left: 20px;
-      }
+    &-text {
+      font: $h5-work-sans;
+    }
+
+    &-span {
+      display: inline-block;
+      width: 50px;
+      padding: 10px;
+      background: $color-caption-label-text;
+      border-radius: 40px;
+      font: $base-work-sans;
+      text-align: center;
+      margin-left: 20px;
+    }
   }
 
   &--cards {
