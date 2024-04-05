@@ -21,6 +21,7 @@ import { jwtInterceptor } from './interceptors/jwt.interceptor';
 import { CreatorComponent } from './components/creator/creator.component';
 import { DetailsComponent } from './components/details/details.component';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { MarketPlaceComponent } from './components/market-place/market-place.component';
 
 
 
@@ -42,6 +43,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
     CreatorComponent,
     DetailsComponent,
     RankingComponent,
+    MarketPlaceComponent,
   ],
   imports: [
     BrowserModule,

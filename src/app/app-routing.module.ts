@@ -10,6 +10,10 @@ import { NotFoundComponent } from './components/errors/not-found/not-found.compo
 import { HomeComponent } from './components/home/home.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { roleGuardGuard } from './guards/role-guard.guard';
+import { CreatorComponent } from './components/creator/creator.component';
+import { DetailsComponent } from './components/details/details.component';
+import { RankingComponent } from './components/ranking/ranking.component';
+import { MarketPlaceComponent } from './components/market-place/market-place.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -30,6 +34,10 @@ const routes: Routes = [
   { path: 'artistCreUpd/:id', component: ArtistCreupComponent },
   { path: 'artistIndex', component: GetArtistComponent},
   { path: 'account', loadChildren: () => import('./account/account.module').then(module => module.AccountModule)},
+  { path: 'details/:id', component: DetailsComponent },
+  { path: 'creator/:id', component: CreatorComponent},
+  { path: 'ranking', component: RankingComponent},
+  { path: 'market', component: MarketPlaceComponent },
   { path: 'not-found',component:NotFoundComponent},
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
