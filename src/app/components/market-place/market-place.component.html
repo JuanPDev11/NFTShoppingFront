@@ -1,0 +1,82 @@
+<section class="section-market">
+  <div class="market ">
+    <div class="market--texts">
+      <h2 class="market--texts-title">Browse Marketplace </h2>
+      <h3 class="market--texts-paragraph">Browse through more than 50k NFTs on the NFT Marketplace.</h3>
+      <div class="market--texts-field">
+        <label class="market--texts-field-label"><mat-icon class="market--texts-field-label-icon" aria-hidden="false" fontIcon="travel_explore"></mat-icon> Search your favorite NFTs</label>
+        <input class="market--texts-field-input" [(ngModel)]="searchText" (ngModelChange)="onSearchChange($event)"
+               placeholder="Ex. Fractal Dreams" value="">
+      </div>
+      <div class="market--texts-count" *ngIf="products">
+        <hr class="market--texts-count-hr" />
+        <h3 class="market--texts-count-text">NFTs <span class="market--texts-count-span">{{products.length}}</span></h3>
+        <hr class="market--texts-count-hr" />
+      </div>
+      <div class="market--texts-pagination" *ngIf="products">
+        <button [disabled]="buttonMinus" (click)="start(1)" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="skip_previous"></mat-icon>
+        </button>
+        <button [disabled]="buttonMinus" (click)="minus(1)" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="navigate_before"></mat-icon>
+        </button>
+        <h3>{{actualPage}} of {{products.length / itemsPerPages}}</h3>
+        <button [disabled]="buttonPlus" (click)="plus(1)" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="navigate_next"></mat-icon>
+        </button>
+        <button [disabled]="buttonPlus" (click)="end()" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="skip_next"></mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="market--container" *ngIf="filters">
+      <div class="market--container-cards">
+        <div class="market--container-cards-no-result" *ngIf="filters.length <= 0">
+          <h2 class="market--container-cards-no-result-text">No results <i class="bi bi-person-fill-x"></i></h2>
+        </div>
+        <div class="discover--container market--cards-container">
+          <div routerLink="/details/{{product.id}}" class="discover--container-card" *ngFor="let product of filters">
+            <div class="discover--container-card-container-img">
+              <img class="discover--container-card-container-img-file" src={{product.imageUrl}} />
+            </div>
+            <div class="discover--container-card-container-texts market--container-cards-texts">
+              <h2 class="discover--container-card-container-texts-namepr">{{product.name}}</h2>
+              <div class="discover--container-card-container-texts-artist-container">
+                <img class="discover--container-card-container-texts-artist-container-img" src={{product.artistData.imageUrl}} />
+                <h2 class="discover--container-card-container-texts-artist-container-name">{{product.artistData.name}}</h2>
+              </div>
+              <div class="discover--container-card-container-texts-info-container ">
+                <div>
+                  <h2 class="discover--container-card-container-texts-info-container-title">Price</h2>
+                  <h2 class="discover--container-card-container-texts-info-container-price">{{product.price}}.89 ETH</h2>
+                </div>
+                <div>
+                  <h2 class="discover--container-card-container-texts-info-container-title">Highest Bid</h2>
+                  <h2 class="discover--container-card-container-texts-info-container-price">{{product.bid}}.22 wETH</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="market--texts-count-hr" />
+      <div class="market--texts-pagination" *ngIf="products">
+        <button [disabled]="buttonMinus" (click)="start(1)" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="skip_previous"></mat-icon>
+        </button>
+        <button [disabled]="buttonMinus" (click)="minus(1)" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="navigate_before"></mat-icon>
+        </button>
+        <h3>{{actualPage}} of {{products.length / itemsPerPages}}</h3>
+        <button [disabled]="buttonPlus" (click)="plus(1)" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="navigate_next"></mat-icon>
+        </button>
+        <button [disabled]="buttonPlus" (click)="end()" class="market--texts-pagination-btn">
+          <mat-icon class="market--texts-pagination-icon" aria-hidden="false" fontIcon="skip_next"></mat-icon>
+        </button>
+      </div>
+      <hr class="market--texts-count-hr" />
+    </div>
+  </div>
+</section>
+

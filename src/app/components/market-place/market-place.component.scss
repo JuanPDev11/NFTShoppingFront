@@ -1,0 +1,125 @@
+@import "../../../styles.scss";
+@import "../home/home.component.scss";
+
+.market {
+  color: $color-text;
+
+  &--texts {
+    width: 80%;
+    margin: auto;
+
+    &-title {
+      font: $h2-work-sans;
+      margin: 100px 0 20px;
+    }
+
+    &-paragraph {
+      font: $h5-work-sans;
+      font-weight: 400;
+      margin: 0 0 50px;
+    }
+
+    &-field {
+      display: flex;
+      margin-bottom: 100px;
+
+      &-label {
+        width: 20%;
+        border: 2px solid $color-caption-label-text;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-right: none;
+        padding: 10px;
+        color: $color-caption-label-text;
+        height: 36px;
+      }
+
+      &-input {
+        all: unset;
+        width: 80%;
+        background: $background-primary;
+        border: 2px solid $color-caption-label-text;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-left: none;
+        padding: 10px;
+
+        &:focus {
+          border-bottom: 3px solid $color-action;
+        }
+      }
+    }
+
+    &-count {
+      text-align: center;
+
+      &-text {
+        font: $h5-work-sans;
+      }
+
+      &-span {
+        font: $base-work-sans;
+        background: $color-caption-label-text;
+        border-radius: 20px;
+        padding: 5px 15px;
+      }
+
+      &-hr {
+        background: $color-caption-label-text;
+        border: none;
+        height: 1px;
+      }
+    }
+
+    &-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+
+      &-icon {
+      }
+
+      &-btn {
+        all: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $background-primary;
+        border: 2px solid $background-secondary;
+        border-radius: 20px;
+        width: 35px;
+        height: 30px;
+        cursor: pointer;
+        color: $color-text;
+
+        &:disabled {
+          color: $background-secondary;
+        }
+      }
+
+      &-plus {
+      }
+    }
+  }
+
+  &--container {
+    background: $background-secondary;
+    padding-bottom: 200px;
+
+    &-cards {
+      width: 80%;
+      margin: auto;
+
+      &-texts {
+        background: $background-primary;
+      }
+
+      &-no-result {
+
+        &-text {
+        }
+      }
+    }
+  }
+}
