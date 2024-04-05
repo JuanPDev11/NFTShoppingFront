@@ -15,6 +15,8 @@ import { Scroll } from '@angular/router';
 export class RankingComponent implements OnInit{
   private isWindowAvailable = typeof window !== 'undefined';
 
+  
+
   artists!: any[];
   filters!: any[];
   searchText = "";
@@ -43,6 +45,8 @@ export class RankingComponent implements OnInit{
       }
     })
   }
+
+  
 
   filterArtists() {
     if (this.searchText) {
