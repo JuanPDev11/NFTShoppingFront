@@ -18,6 +18,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { jwtInterceptor } from './interceptors/jwt.interceptor';
+import { CreatorComponent } from './components/creator/creator.component';
+import { DetailsComponent } from './components/details/details.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 
 
@@ -36,6 +39,9 @@ import { jwtInterceptor } from './interceptors/jwt.interceptor';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    CreatorComponent,
+    DetailsComponent,
+    RankingComponent,
   ],
   imports: [
     BrowserModule,
