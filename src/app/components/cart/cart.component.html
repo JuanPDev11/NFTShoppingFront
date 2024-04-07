@@ -1,0 +1,13 @@
+<section class="section-cart">
+  <div class="cart">
+    <div class="cart--container">
+      <div class="cart--container-card" *ngFor="let cart of carts">
+        <img src={{cart.product.imageUrl}}>
+        <h3>Name: {{cart.product.name}}</h3>
+        <h3>Count: {{cart.count}} X ${{cart.product.price}}</h3>
+        <h3>Total: {{cart.count * cart.product.price}}$</h3>
+      </div>
+      <button routerLink="/summary"> Proced to pay</button>
+    </div>
+  </div>
+</section>
