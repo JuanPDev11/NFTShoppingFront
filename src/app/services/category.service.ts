@@ -16,9 +16,12 @@ export class CategoryService {
   private myApiUrl: string = 'api/Category/';
   private myApiUrlP: string = 'api/Product/';
   private myApiUrlA: string = 'api/Artist/';
+  private myApiUrlC: string = 'api/Cart/';
 
+  
 
-  constructor(private _http:HttpClient, private _account:AccountService) { }
+  constructor(private _http: HttpClient, private _account: AccountService) {
+  }
 
   //Category
   getCategories(): Observable<Category[]>{
@@ -117,4 +120,27 @@ export class CategoryService {
     return this._http.get(`${this.myAppUrl}${this.myApiUrlA}details/${id}`)
   }
 
+  //CART
+
+  addCart(data: FormData) : Observable<any>{
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+    return this._http.post(`${this.myAppUrl}${this.myApiUrlA}cart`, data, {headers});
+  }
+
+  getCart() : Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}getCart`, {headers});
+  }
+
+  //SUMMARY
+  getSummary(): Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}summary`, {headers});
+  }
 }
