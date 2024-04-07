@@ -14,6 +14,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AccountService {
+  private isLocalStorageAvailable = typeof localStorage !== undefined;
   myApiUrl = environment.endpoint;
   private userSource = new ReplaySubject<User | null>(1);
   user$ = this.userSource.asObservable();
@@ -72,17 +73,16 @@ export class AccountService {
    getJWT()  {
     
 
-      const key = localStorage.getItem(environment.userKey);
+     if (this.isLocalStorageAvailable) {
+       const key = localStorage.getItem(environment.userKey);
+       if (key == null) { return null; }
+       const user: User = JSON.parse(key);
 
-      if (key) {
-        const user: User = JSON.parse(key);
-        
-        
-        
-        return user.jwt;
-      } else {
-        return null;
-      }
+       return user.jwt;
+
+     } else {
+       return null;
+     }
 
     
   }
