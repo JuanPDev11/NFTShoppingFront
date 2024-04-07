@@ -17,6 +17,7 @@ export class CategoryService {
   private myApiUrlP: string = 'api/Product/';
   private myApiUrlA: string = 'api/Artist/';
   private myApiUrlC: string = 'api/Cart/';
+  
 
   
 
@@ -142,5 +143,21 @@ export class CategoryService {
     let headers = new HttpHeaders();
     headers = headers.set("Authorization", "Bearer " + jwt);
     return this._http.get(`${this.myAppUrl}${this.myApiUrlC}summary`, {headers});
+  }
+
+  postSummary(data:FormData) :Observable<any>{
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.post(`${this.myAppUrl}${this.myApiUrlC}summaryPost`, data, { headers })
+  }
+
+  paymentRes(id: number): Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}ordersuccess/${id}`, {headers});
   }
 }
