@@ -18,6 +18,7 @@ export class AccountService {
   private userSource = new ReplaySubject<User | null>(1);
   user$ = this.userSource.asObservable();
   
+
   constructor(private _http:HttpClient, private router:Router) { }
 
   register(model:Register) {
@@ -28,17 +29,21 @@ export class AccountService {
     return this._http.post<User>(`${this.myApiUrl}api/account/login`, model).pipe(
       map((user: User) => {
         if (user) {
+          
           this.setUser(user);
           
+
         }
-      })
+      })   
     );
+    
   }
 
   logout() {
     localStorage.removeItem(environment.userKey);
     this.userSource.next(null);
     this.router.navigate(['']);
+    location.reload();
   }
 
   refreshUser(jwt:string | null) {
