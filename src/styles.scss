@@ -76,6 +76,12 @@ body {
     text-align: center;
   }
 
+  &--button{
+      border-radius: 20px;
+      border: 2px solid $color-action !important;
+      background-color:$background-secondary !important;
+      
+  }
  
 }
 
@@ -232,3 +238,42 @@ mat-paginator.mat-mdc-paginator {
 .section-market{
     border-bottom: 3px solid $background-primary;
 }
+
+.section-order {
+  width: 80%;
+  margin: 0 auto 200px;
+  color: $color-text ;
+}
+
+.section-button{
+    width: 96.9%;
+    display: flex;
+    align-items:end;
+    flex-direction: column;
+    margin-bottom:20px;
+    
+
+    &-text{
+        font: $body-work-sans;
+        color:$color-action;
+        margin: 5px;
+    }
+}
+
+.mdc-switch {
+  width: 50px !important;
+  
+}
+
+.mdc-switch .mdc-switch__track {
+  height: 30px !important;
+
+  &::before {
+    border-radius: 20px !important;
+  }
+
+  &::after {
+    border-radius: 20px !important;
+  }
+}
+
