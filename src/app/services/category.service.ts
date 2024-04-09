@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Category } from '../interface/category';
 import { url } from 'node:inspector';
 import { Product } from '../interface/product';
@@ -17,6 +17,7 @@ export class CategoryService {
   private myApiUrlP: string = 'api/Product/';
   private myApiUrlA: string = 'api/Artist/';
   private myApiUrlC: string = 'api/Cart/';
+  private myApiUrlO: string = 'api/Order/';
   
 
   
@@ -123,18 +124,67 @@ export class CategoryService {
 
   //CART
 
-  addCart(data: FormData) : Observable<any>{
+  addCart(data: FormData) {
     const jwt = this._account.getJWT();
     let headers = new HttpHeaders();
     headers = headers.set("Authorization", "Bearer " + jwt);
-    return this._http.post(`${this.myAppUrl}${this.myApiUrlA}cart`, data, {headers});
+    return this._http.post(`${this.myAppUrl}${this.myApiUrlA}cart`, data, { headers }).subscribe({
+      next: data => {
+        this.getCart();
+      }
+    });
+  }
+  private cartSubject = new Subject<any>();
+  public cartObservable = this.cartSubject.asObservable();
+
+  getCart()  {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}getCart`, { headers }).subscribe({
+      next: data => {
+        this.cartSubject.next(data)
+
+      }
+    });
   }
 
-  getCart() : Observable<any> {
+  updateCart(newCart:any) {
+    this.cartSubject.next(newCart)
+  }
+
+  increment(count: number, productId: number): Observable<any> {
     const jwt = this._account.getJWT();
     let headers = new HttpHeaders();
     headers = headers.set("Authorization", "Bearer " + jwt);
-    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}getCart`, {headers});
+
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}increment/${count}/${productId}`, {headers});
+  }
+
+  decrement(count: number, productId: number): Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}decrement/${count}/${productId}`, {headers});
+  }
+
+
+  deleteCart(id:number) :Observable<any>{
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.delete(`${this.myAppUrl}${this.myApiUrlC}deleteCart/${id}`, {headers})
+  }
+
+  deleteRange(): Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.delete(`${this.myAppUrl}${this.myApiUrlC}deleteCarts`, {headers})
+
   }
 
   //SUMMARY
@@ -159,5 +209,23 @@ export class CategoryService {
     headers = headers.set("Authorization", "Bearer " + jwt);
 
     return this._http.get(`${this.myAppUrl}${this.myApiUrlC}ordersuccess/${id}`, {headers});
+  }
+
+  //ORDERS
+
+  getOrders(): Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlO}getOrders`);
+  }
+
+  getDetails(id: number): Observable<any>{
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlO}orderDetails/${id}`);
   }
 }
