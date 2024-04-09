@@ -2,17 +2,21 @@
   <h2 class="navbar--title"><mat-icon class="navbar--title-icon" fontIcon="store"></mat-icon> NFT Marketplace</h2>
   <div class="navbar--links">
     <ul class="navbar--list">
+      <li><a class="navbar--link" routerLink="/orderIndex">Orders </a></li>
       <li><a class="navbar--link" routerLink="/productIndex">Products</a></li>
       <li><a class="navbar--link" routerLink="/categoryIndex">Categories</a></li>
       <li><a class="navbar--link" routerLink="/artistIndex">Artists</a></li>
     </ul>
     <ul class="navbar--account" *ngIf="(service.user$ | async) === null">
+      
+      <li><a class="navbar--link" routerLink="/cart">Cart </a></li>
       <li><a class="navbar--link" routerLink="">Marketplace</a></li>
       <li><a class="navbar--link" routerLink="">Rankings</a></li>
       <li><a class="navbar--link" routerLink="/account/register">Register</a></li>
       <li><button class="navbar--link" routerLink="/account/login" mat-fab extended color="primary">Login</button></li>
     </ul>
     <ul class="navbar--account" *ngIf="(service.user$ | async) as user">
+      <li ><a class="navbar--link" *ngIf="app.carts" routerLink="/cart">Cart ({{app.carts.length}})</a></li>
       <li><a class="navbar--link" routerLink="">Marketplace</a></li>
       <li><a class="navbar--link" routerLink="">Rankings</a></li>
       <li><span><strong class="navbar--account-hi">Hi</strong> {{user.name | titlecase}}</span></li>
