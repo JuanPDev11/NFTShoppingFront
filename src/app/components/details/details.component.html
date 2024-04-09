@@ -50,6 +50,18 @@
               </div>
             </div>
           </div>
+          <form class="details--container-info-card-form" [formGroup]="formCart" (ngSubmit)="submit()">
+            
+              <input type="hidden"  formControlName="productId">
+            
+            
+              <mat-label>Count</mat-label>
+              <input type="number" formControlName="count">
+            
+            <button type="submit">
+              Add To Cart
+            </button>
+          </form>
         </div>
       </div>
       <div class="details--container-cards">
