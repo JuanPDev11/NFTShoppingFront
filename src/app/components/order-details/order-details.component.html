@@ -1,0 +1,157 @@
+<section class="section-order">
+  <div class="order--title-container">
+    <h3 class="order--title-container-title">Update Order</h3>
+    
+    <section class="section-button">
+      <h2 class="section-button-text">Fields</h2>
+      <mat-slide-toggle [color]="color"
+                        (click)="showFormMethod()">
+      </mat-slide-toggle>
+    </section>
+    
+
+  </div>
+  <div class="order--container">
+    <div class="order--products">
+      <div class="order--container-products">
+        <mat-accordion >
+          <mat-expansion-panel class="order--container-products-acordion" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="order--container-products-acordion-title">
+                <h2 class="order--container-products-acordion-text">Products this Order</h2>
+                <i class="order--container-products-acordion-text-icon bi bi-caret-down"></i>
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <div class="order--container-products-card" *ngFor="let detail of productDetails">
+              <div class="order--container-products-card-first">
+                <img class="order--container-products-card-first-img" src={{detail.product.imageUrl}} width="40" height="40" />
+                <h3 class="order--container-products-card-first-name">{{detail.product.name}}</h3>
+              </div>
+              <div class="order--container-products-card-second">
+                <h3 class="order--container-products-card-second-price">Price: <span class="order--container-products-card-second-span">${{detail.product.price}}</span> X Quantity: <span class="order--container-products-card-second-span">{{detail.count}}</span></h3>
+                <h3 class="order--container-products-card-second-total">Total: <span class="order--container-products-card-second-span">${{detail.product.price * detail.count}}</span></h3>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <div class="order--container-products-card-total">
+            <h2 class="order--container-products-card-total-text" *ngIf="orderDetails">Order Total: <span class="order--container-products-card-second-span">${{orderDetails.orderTotal}}</span></h2>
+          </div>
+
+       </mat-accordion>
+      </div>
+    </div>
+    <div class="order--container-form">
+      <form class="order--form" [formGroup]="formDetails" (ngSubmit)="submit()">
+
+        <mat-grid-list cols="2" rowHeight="100px">
+          <mat-grid-tile rowspan="1">
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input class="order--form-input" matInput formControlName="name">
+            </mat-form-field>
+          </mat-grid-tile>
+
+
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Phone</mat-label>
+              <input matInput name="description" formControlName="phone">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>City</mat-label>
+              <input matInput name="displayOrder" formControlName="city">
+            </mat-form-field>
+          </mat-grid-tile>
+
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>State</mat-label>
+              <input matInput formControlName="state">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Date Of Order</mat-label>
+              <input matInput formControlName="dateOrder">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Order Status</mat-label>
+              <input matInput formControlName="orderStatus">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Payment Status</mat-label>
+              <input matInput formControlName="paymentStatus">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile >
+            <mat-form-field class="order--form-input" appearance="fill">
+              <mat-label>Date Of Payment</mat-label>
+              <input matInput formControlName="datePayment">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile  class="order--form-info-title" colspan="2">
+            <div class="order--form-add">
+              <h2 class="order--form-add-title">Add Shipping Info</h2>
+            </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile >
+            <div class="order--form-info-1">
+              <mat-form-field class="order--form-input" appearance="fill">
+                <mat-label>Carrier</mat-label>
+                <input matInput formControlName="carrier">
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          
+          <mat-grid-tile >
+            <div class="order--form-info-2">
+              <mat-form-field class="order--form-input" appearance="fill">
+                <mat-label>Tracking Number</mat-label>
+                <input matInput formControlName="trackingNumber">
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+
+
+
+          <mat-grid-tile colspan="2">
+            <button type="submit" class="order--button" mat-fab extended color="primary">Update Order</button>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+      </form>
+    </div>
+
+  </div>
+
+</section>
