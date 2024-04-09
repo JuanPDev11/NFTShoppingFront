@@ -28,6 +28,11 @@ import { ValidationMessagesComponent } from '../components/errors/validation-mes
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HomeComponent } from '../components/home/home.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -49,6 +54,12 @@ import { HomeComponent } from '../components/home/home.component';
     MatGridListModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatCardModule
+
 
 
     
@@ -67,6 +78,12 @@ import { HomeComponent } from '../components/home/home.component';
     MatGridListModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatCardModule
+
   
 
  
