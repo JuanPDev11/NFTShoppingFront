@@ -33,6 +33,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSlideToggleModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule
 
 
 
@@ -82,7 +84,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSlideToggleModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule
 
   
 
