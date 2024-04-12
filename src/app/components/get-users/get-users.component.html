@@ -1,0 +1,64 @@
+<div class="admin-table">
+  <div class="admin-table--container">
+    <div class="admin-table--titlecontainer">
+      <h2 class="admin-table--titleprincipal">List of Users</h2>
+    </div>
+    <div class="admin-table--tablematerial">
+      <div class="mat-elevation-z8 admin-table--table-container">
+        <table class="admin-table--table" mat-table [dataSource]="dataSource">
+
+          <!--Name Column-->
+          <ng-container matColumnDef="name">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Name </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!--UserName Column-->
+          <ng-container matColumnDef="userName">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> UserName </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.userName}} </td>
+          </ng-container>
+
+          <!--Phone Column-->
+          <ng-container matColumnDef="phone">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Phone </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+          <!--Email Confirmed Column-->
+          <ng-container matColumnDef="emailConfirmed">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef> Email Confirmed </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element">
+              <ng-container *ngIf="element.emailConfirmed == '1'; else returnFalse">
+                True
+              </ng-container>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th class="admin-table--table-column" mat-header-cell *matHeaderCellDef>
+              <button routerLink="/account/creUpdUsr/" class="admin-table--button" mat-fab extended color="primary">Create User</button>
+            </th>
+            <td class="admin-table--table-column" mat-cell *matCellDef="let element">
+              <mat-icon class="admin-table--icon-edit" routerLink="/account/creUpdUsr/{{element.id}}"  aria-hidden="false" fontIcon="edit"></mat-icon>
+              <mat-icon class="admin-table--icon-trash" (click)="RemoveProduct(element.id)" aria-hidden="false" fontIcon="delete"></mat-icon>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #returnFalse>
+  False
+</ng-template>
