@@ -21,6 +21,8 @@ export class CategoryService {
   private myApiUrlA: string = 'api/Artist/';
   private myApiUrlC: string = 'api/Cart/';
   private myApiUrlO: string = 'api/Order/';
+  private myApiUrlU: string = 'api/User/'
+
   public cartSubject = new Subject<any>();
   public cartObservable = this.cartSubject.asObservable();
   public isLoading = true;
@@ -262,4 +264,12 @@ export class CategoryService {
     return this._http.post(`${this.myAppUrl}${this.myApiUrlO}updateAddress`, form);
   }
 
+  //USERS
+  getUsers(): Observable<any> {
+    const jwt = this._account.getJWT();
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + jwt);
+
+    return this._http.get(`${this.myAppUrl}${this.myApiUrlU}getUsers`, { headers });
+  }
 }
