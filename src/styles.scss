@@ -3,6 +3,9 @@
 //Icons Bootstrap
 @import "bootstrap-icons/font/bootstrap-icons.css";
 //VARIABLES
+
+
+
 $background-primary: #2B2B2B;
 $background-secondary: #3B3B3B;
 $color-caption-label-text: #858584;
@@ -264,6 +267,10 @@ mat-paginator.mat-mdc-paginator {
   margin-bottom:200px;
 }
 
+.section-success{
+    margin: 200px auto;
+}
+
 .mdc-switch {
   width: 50px !important;
   
@@ -280,4 +287,20 @@ mat-paginator.mat-mdc-paginator {
     border-radius: 20px !important;
   }
 }
+
+.admin-form--input .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: $color-text !important;
+  
+}
+
+.market--texts-mat-field .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: $background-primary !important;
+  border: 2px solid $color-caption-label-text ;
+  
+}
+
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
+  background: $background-primary !important;
+}
+
 
