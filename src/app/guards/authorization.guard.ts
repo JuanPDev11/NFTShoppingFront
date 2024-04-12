@@ -6,20 +6,25 @@ import { AccountService } from '../services/account.service';
 import { SharedService } from '../shared/shared.service';
 import { User } from '../interface/user';
 import { environment } from '../../environments/environment';
+import { AppComponent } from '../app.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationGuard  {
-  private isLocalStorage = typeof localStorage !== undefined;
+  private isLocalStorage!: boolean;
   constructor(private serviceAccount: AccountService, private serviceShared: SharedService,
   private _redirect:Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-    
-    let local = localStorage.getItem(environment.userKey);
+
+    this.isLocalStorage = this.checkLocalStorage();
+    let local;
+    if (this.isLocalStorage) {
+      local = localStorage.getItem(environment.userKey);
+    }
     if (local !== null) {
       console.log("from true");
       return of(true);
@@ -28,6 +33,16 @@ export class AuthorizationGuard  {
       this.serviceShared.showModal("Please Login","You must be logged")
       this._redirect.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
       return of(false);
+    }
+  }
+
+  checkLocalStorage() {
+    try {
+      localStorage.setItem('test', 'test');
+      localStorage.removeItem('test');
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 }
