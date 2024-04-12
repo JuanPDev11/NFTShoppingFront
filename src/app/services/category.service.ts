@@ -13,6 +13,8 @@ import { CartComponent } from '../components/cart/cart.component';
   providedIn: 'root'
 })
 export class CategoryService {
+  private isAvailable = typeof localStorage !== undefined;
+
   private myAppUrl: string = environment.endpoint;
   private myApiUrl: string = 'api/Category/';
   private myApiUrlP: string = 'api/Product/';
@@ -200,10 +202,14 @@ export class CategoryService {
 
   //SUMMARY
   getSummary(): Observable<any> {
-    const jwt = this._account.getJWT();
-    let headers = new HttpHeaders();
-    headers = headers.set("Authorization", "Bearer " + jwt);
-    return this._http.get(`${this.myAppUrl}${this.myApiUrlC}summary`, {headers});
+    if (this.isAvailable) {
+      const jwt = this._account.getJWT();
+      let headers = new HttpHeaders();
+      headers = headers.set("Authorization", "Bearer " + jwt);
+      return this._http.get(`${this.myAppUrl}${this.myApiUrlC}summary`, { headers });
+    } else {
+      return this.getSummary();
+    }
   }
 
   postSummary(data:FormData) :Observable<any>{
