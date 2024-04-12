@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<head>
+<!--<head>
   <title>Buy cool new product</title>
   <script src="https://js.stripe.com/v3/"></script>
 </head>
@@ -49,5 +49,82 @@
       <button type="submit">Checkout</button>
     </form>
   </section>
-</body>
+</body>-->
 
+<!--<head>
+    <title>Buy cool new product</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>-->
+<section class="section-cart " *ngIf="isAvailable">
+  <div class="cart summary">
+    <mat-progress-bar *ngIf="!carts" mode="indeterminate"></mat-progress-bar>
+    <div class="cart--container">
+      <div class="cart--container-1 summary--first">
+        <mat-accordion class="cart--container-1-acordion">
+          <mat-expansion-panel *ngIf="carts" hideToggle class="cart--container-1-acordion-panel">
+            <mat-expansion-panel-header class="cart--container-1-acordion-panel-header">
+              <mat-panel-title class="cart--container-1-acordion-panel-header-container">
+                <h3 class="cart--container-1-acordion-panel-header-title">View your products !</h3>
+                <i class="cart--container-1-acordion-panel-header-title-icon bi bi-caret-down"></i>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div  class="cart--container-card summary--card" *ngFor="let cart of carts.carts">
+
+              <div class="cart--container-card-div1 summary--texts">
+                <img src={{cart.product.imageUrl}} width="50" height="50">
+                <h3 class="cart--container-card-div1-name">Name: {{cart.product.name}}</h3>
+              </div>
+              <div class="cart--container-card-div2 summary--count">
+                <h3 class="cart--container-card-div2-count">Count: <span class="span">{{cart.count}}</span> X <span class="span">${{cart.product.price}}</span></h3>
+                <h3 class="cart--container-card-div2-count">Total: <span class="span">${{cart.count * cart.product.price}}</span></h3>
+              </div>
+
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="cart--container-2 summary--second">
+        <div class="summary--title-container">
+          <h3 class="summary--title-container-text">Verify Your Data</h3>
+        </div>
+        <form class="summary--form" method="POST" [formGroup]="formOrder" (ngSubmit)="submit()">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Postal Code</mat-label>
+            <input matInput formControlName="postalCode">
+          </mat-form-field>
+          <div class="summary--button">
+            <button class="cart--button-container-btn green summary--button-btn" type="submit" mat-fab extended color="primary">Checkout</button>
+            <button *ngIf="orders" class="cart--button-container-btn-total summary--button-btn" mat-fab extended color="primary">Total ${{orders.orderHeader.orderTotal}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</section>
