@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-summary',
@@ -9,9 +11,14 @@ import Swal from 'sweetalert2';
   styleUrl: './summary.component.scss'
 })
 export class SummaryComponent implements OnInit {
+  public isAvailable = this.app.isLocalStorageAvailable;
+  firstAccess = true;
+
   carts: any;
   formOrder!: FormGroup;
-  constructor(private _serviceC: CategoryService, private _fb: FormBuilder) {
+  orders: any;
+
+  constructor(private _serviceC: CategoryService, private _fb: FormBuilder, private _router: Router, public app: AppComponent,) {
     this.formOrder = _fb.group({
       name: ['',[Validators.required]],
       phone: ['', [Validators.required]],
@@ -23,23 +30,45 @@ export class SummaryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getOrder();
+    this.isAvailable = this.checkLocalStorage();
+      if (this.isAvailable) {
+        //let firstAccess = localStorage.getItem('firstAccess');
+        //if (firstAccess === null) {
+          this.getOrder();
+          localStorage.setItem('firstAccess', 'false');
+        //} else {
+        //  this._router.navigate(['/cart']);
+        //  localStorage.removeItem('firstAccess');
+        //}
+      }
+    
   }
 
-  getOrder() {
-    this._serviceC.getSummary().subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.carts = data;
-        this.formOrder.patchValue({
-          name: data.orderHeader.name,
-          phone: data.orderHeader.phone,
-          address: data.orderHeader.address,
-          city: data.orderHeader.city,
-          state: data.orderHeader.state,
-        })
-      }
-    })
+  checkLocalStorage() {
+    try {
+      localStorage.setItem('test', 'test');
+      localStorage.removeItem('test');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  getOrder() { 
+      this._serviceC.getSummary().subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.carts = data;
+          this.orders = data;
+          this.formOrder.patchValue({
+            name: data.orderHeader.name,
+            phone: data.orderHeader.phone,
+            address: data.orderHeader.address,
+            city: data.orderHeader.city,
+            state: data.orderHeader.state,
+          })
+        }
+      })   
   }
 
   submit() {
