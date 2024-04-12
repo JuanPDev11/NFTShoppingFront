@@ -1,0 +1,28 @@
+@import "../../../styles.scss";
+
+.success {
+  width: 80%;
+  margin: auto;
+
+  &--container {
+    border: 20px solid $background-primary;
+    border-radius: 30px;
+    background: $background-secondary;
+    text-align: center;
+    padding: 30px;
+    color: $color-text;
+    border-bottom: 20px solid $color-action;
+    border-top: 20px solid $color-action;
+    margin: 50px 0;
+
+    &-btn {
+      margin: 0 25px;
+      width: 30%;
+      margin: 40px 5%;
+    }
+
+    &-title{
+        font: $h2-work-sans;
+    }
+  }
+}
