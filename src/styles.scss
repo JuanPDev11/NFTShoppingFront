@@ -1,10 +1,10 @@
+//NORMALIZE
+@import 'normalize.css';
 //Work Sans
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 //Icons Bootstrap
 @import "bootstrap-icons/font/bootstrap-icons.css";
 //VARIABLES
-
-
 
 $background-primary: #2B2B2B;
 $background-secondary: #3B3B3B;
@@ -25,6 +25,19 @@ $base-work-sans: normal normal 16px/16px "Work Sans";
 $caption-work-sans: normal normal 16px/16px "Work Sans";
 $body-work-sans: normal normal 22px/22px "Work Sans";
 
+//MIXIN RESPONSIVE
+
+@mixin responsive($size1, $size2) {
+  @media screen and (min-width: $size1) and (max-width: $size2) {
+    @content;
+  }
+}
+
+@mixin smartphone ($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
 
 
 html, body { height: 100%; }
