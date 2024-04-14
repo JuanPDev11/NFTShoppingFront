@@ -2,7 +2,22 @@
   <div class="market ">
     <div class="market--texts">
       <h2 class="market--texts-title">Browse Marketplace </h2>
-      <h3 class="market--texts-paragraph">Browse through more than 50k NFTs on the NFT Marketplace.</h3>
+      <h3 class="market--texts-paragraph">Browse through more than 50k NFTs on the NFT Marketplace.</h3>      
+      
+      <mat-form-field appearance="fill" class="market--texts-mat-field">
+        <mat-label class="market--texts-mat-field-label">Filter by Category</mat-label>
+        <mat-select [(value)]="selectedValue" class="market--texts-mat-field-select" (selectionChange)="onFilterCategories($event)">
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[8]">None</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[0]">Art</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[1]">Collectibles</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[2]">Music</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[3]">Photography</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[4]">Video</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[5]">Utility</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[6]">Sport</mat-option>
+          <mat-option class="market--texts-mat-field-select-option" [value]="categories[7]">Virtual W</mat-option>
+        </mat-select>
+      </mat-form-field>
       <div class="market--texts-field">
         <label class="market--texts-field-label"><mat-icon class="market--texts-field-label-icon" aria-hidden="false" fontIcon="travel_explore"></mat-icon> Search your favorite NFTs</label>
         <input class="market--texts-field-input" [(ngModel)]="searchText" (ngModelChange)="onSearchChange($event)"
@@ -10,7 +25,7 @@
       </div>
       <div class="market--texts-count" *ngIf="products">
         <hr class="market--texts-count-hr" />
-        <h3 class="market--texts-count-text">NFTs <span class="market--texts-count-span">{{products.length}}</span></h3>
+        <h3 class="market--texts-count-text">NFTs <span *ngIf="perCategories;else lengthProducts" class="market--texts-count-span">{{filters.length}}</span></h3>
         <hr class="market--texts-count-hr" />
       </div>
       <div class="market--texts-pagination" *ngIf="products">
@@ -32,7 +47,7 @@
     <div class="market--container" *ngIf="filters">
       <div class="market--container-cards">
         <div class="market--container-cards-no-result" *ngIf="filters.length <= 0">
-          <h2 class="market--container-cards-no-result-text">No results <i class="bi bi-person-fill-x"></i></h2>
+          <h2 class="market--container-cards-no-result-text">No results <mat-icon class="market--container-cards-no-result-text-icon" aria-hidden="false" fontIcon="search_off"></mat-icon></h2>
         </div>
         <div class="discover--container market--cards-container">
           <div routerLink="/details/{{product.id}}" class="discover--container-card" *ngFor="let product of filters">
@@ -80,3 +95,6 @@
   </div>
 </section>
 
+<ng-template #lengthProducts>
+  <span class="market--texts-count-span">{{products.length}}</span>
+</ng-template>
