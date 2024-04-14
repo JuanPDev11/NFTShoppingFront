@@ -8,6 +8,23 @@
     width: 80%;
     margin: auto;
 
+    &-mat-field {
+
+
+      &-label {
+        color: $color-caption-label-text !important;
+      }
+
+      &-select {
+        color: $color-caption-label-text !important;
+
+        &-option {
+          color: $color-caption-label-text !important;
+        }
+      }
+    }
+
+
     &-title {
       font: $h2-work-sans;
       margin: 100px 0 20px;
@@ -106,6 +123,7 @@
   &--container {
     background: $background-secondary;
     padding-bottom: 200px;
+    padding-top: 40px;
 
     &-cards {
       width: 80%;
@@ -116,10 +134,26 @@
       }
 
       &-no-result {
+        background: $background-primary;
+        padding: 35px;
+        text-align: center;
+        border: 2px solid $color-caption-label-text;
+        border-radius: 30px;
+        margin: 50px auto;
 
         &-text {
+          font: $h4-work-sans;
+
+          &-icon {
+            font-size: 36px;
+            width: 40px;
+            height: 31px;
+          }
         }
       }
     }
   }
 }
+
+
+
