@@ -69,7 +69,7 @@
     </div>
     <div class="categories">
       <div class="categories--container">
-        <div class="categories--container-card" *ngFor="let cat of categories">
+        <div routerLink="/market" [queryParams]="{cat: cat.name}" class="categories--container-card" *ngFor="let cat of categories">
           <img class="categories--container-card-img" src={{cat.imageUrl}} />
           <div class="categories--container-card-text">
             <h2 class="categories--container-card-name">{{cat.name}}</h2>
