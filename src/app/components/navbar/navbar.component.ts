@@ -7,6 +7,7 @@ import { CartComponent } from '../cart/cart.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { AppComponent } from '../../app.component';
+import { RoleServiceService } from '../../services/role-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,9 +17,10 @@ import { AppComponent } from '../../app.component';
 export class NavbarComponent implements OnInit {
   private isLocalStorageAvailable = typeof localStorage !== 'undefined';
   
-  
+  token: any;
   carts: any;
-  constructor(private _redirect: Router, public service: AccountService, public app:AppComponent) {
+  constructor(private _redirect: Router, public service: AccountService, public app: AppComponent,
+              private _roleService:RoleServiceService,private serviceC:CategoryService) {
     
   }
     
@@ -30,8 +32,25 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.isLocalStorageAvailable) {
+      this.getCarts();
+      this.token = this._roleService.getRole();
+    }
     
-    
+  }
+
+  getCarts() {
+    this.serviceC.cartObservable.subscribe({
+      next: (data: any) => {
+        this.carts = data;
+      }
+    })
+
+    this.serviceC.cartObservable.subscribe({
+      next: (data: any) => {
+        this.carts = data;
+      }
+    })
   }
 
   
