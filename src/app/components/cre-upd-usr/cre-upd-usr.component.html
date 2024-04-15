@@ -36,10 +36,15 @@
                 <input type="password" matInput formControlName="Password">
               </mat-form-field>
 
-              <mat-form-field class="admin-form--input" appearance="fill">
-                <mat-label>Role</mat-label>
-                <input matInput formControlName="Role">
+              <mat-form-field class="admin-form--input">
+                <mat-label>Select a Role</mat-label>
+                <mat-select formControlName="Role">
+                  <mat-option [value]="Roles[0]">Employee</mat-option>
+                  <mat-option [value]="Roles[1]">Customer</mat-option>
+                </mat-select>
               </mat-form-field>
+               
+              
 
 
               <button type="submit" class="admin-table--button" mat-fab extended color="primary">Create Account</button>
