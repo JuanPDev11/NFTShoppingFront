@@ -10,6 +10,7 @@ import { AccountService } from '../../services/account.service';
 })
 export class CreUpdUsrComponent implements OnInit{
   formRegister!: FormGroup;
+  Roles: string[] = ["Employee", "Customer"];
 
   constructor(private _serviceA: AccountService, private _fb: FormBuilder) {
     this.formRegister = _fb.group({
