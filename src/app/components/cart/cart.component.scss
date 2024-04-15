@@ -1,0 +1,220 @@
+@import "../../../styles.scss";
+
+.cart {
+  width: 80%;
+  margin: auto;
+  
+  color: $color-text;
+
+  &--container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background: $background-secondary;
+    padding: 30px;
+    border-top: 10px solid $background-primary;
+    border-radius: 30px;
+
+
+    &-1 {
+      flex-direction: column;
+      width: 80%;
+      gap: 25px;
+      margin: 15px 0;
+
+      &-acordion {
+        background: $background-primary;
+
+        &-panel {
+          /*all: unset;*/
+          background: $background-secondary;
+          border-top-left-radius: 30px !important;
+          border-bottom-left-radius: 30px !important;
+
+         
+
+          &-header {
+            padding: 0;
+            background: $background-primary;
+            border-radius: 0;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border: 3px solid $color-caption-label-text;
+            min-height: 94px;
+
+            &-container{
+                display: flex;
+                justify-content: space-between;
+            }
+            &-title{
+                font: $h4-work-sans;
+                color: $color-text ;
+                margin-left: 20px;
+
+                &-icon{
+                    font-size: 50px;
+                    color: $color-text;
+                    font-weight:bold;
+                    margin-right: 5%;
+                }
+            }
+
+            &:hover {
+              background: #212121 !important;
+            }
+          }
+        }
+      }
+    }
+
+    &-2 {
+      background: $gradient-2;
+      width: 20%;
+      margin: 15px 0 45px;
+      /*border-left: 20px solid $background-primary;*/
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      min-height: 100px;
+    }
+
+
+    
+
+    &-card {
+      display: flex;
+      flex-direction: row;
+      gap: 25px;
+      justify-content: start;
+      align-items: self-start;
+      padding: 30px;
+      background: $background-primary;
+      border: 2px solid $color-caption-label-text;
+      border-radius: 30px;
+      border-right: 5px solid $background-primary;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      width: 100%;
+      margin-right: -3%;
+      margin: 15px 0;
+      transition: all 1s;
+      color: $color-text;
+
+      &:hover {
+          background: $color-action;
+          
+      }
+
+      &-div1 {
+        display: flex;
+        gap: 20px;
+        min-width: 400px;
+
+        &-name {
+          font: $body-work-sans;
+          margin: 0;
+          font-weight: bold;
+        }
+      }
+
+      &-div2 {
+        display: flex;
+        gap: 30px;
+        min-width: 400px;
+
+
+        &-count {
+          font: $body-work-sans;
+          margin: 0;
+          font-weight: bold;
+        }
+      }
+
+      &-div3 {
+        display: flex;
+        justify-content: center;
+
+        &-btn {
+          all: unset;
+          background: $background-primary;
+          border: 2px solid $color-caption-label-text;
+          width: 25px;
+          text-align: center;
+          padding: 5px;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+            background: #383838;
+          }
+        }
+      }
+    }
+  }
+
+  &--button-container{
+      background: $background-secondary;
+      border-top: 10px solid $background-primary;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      gap: 5%;
+
+      &-1{
+          display: flex;
+          gap: 5%;
+      }
+
+      &-btn{
+          background-color: $background-primary;
+          border: 2px solid $color-caption-label-text;
+          transition: all 1s;
+
+          &-total{
+              width: 13%;
+              pointer-events: none;
+          }
+      }
+  }
+
+}
+
+.span {
+  font: $body-work-sans;
+  margin: 0;
+  color: $color-text;
+}
+
+.left{
+    border-top-left-radius:20px;
+    border-bottom-left-radius: 20px;
+    border-right: none;
+}
+
+.center{
+    /*border-left: none;
+    border-right: none;*/
+}
+
+.right{
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.green {
+
+  &:hover {
+    background: #32cd32;
+  }
+}
+
+.red {
+
+  &:hover {
+    background: #ff0000;
+  }
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
