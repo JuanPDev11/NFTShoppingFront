@@ -14,6 +14,12 @@ import { CreatorComponent } from './components/creator/creator.component';
 import { DetailsComponent } from './components/details/details.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { MarketPlaceComponent } from './components/market-place/market-place.component';
+import { CartComponent } from './components/cart/cart.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { OrdersuccessComponent } from './components/ordersuccess/ordersuccess.component';
+import { GetOrdersComponent } from './components/get-orders/get-orders.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { GetUsersComponent } from './components/get-users/get-users.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -22,23 +28,56 @@ const routes: Routes = [
     component : GetCategoriesComponent,
     runGuardsAndResolvers: 'always',
     canActivate: [roleGuardGuard],
-    data: {expectedRole: 'Admin'},
+    data: { expectedRoleAdmin: 'Admin', expectedRoleEmployee: 'Employee' }
   },
-  /*{ path: 'categoryIndex', component: GetCategoriesComponent },*/
+  {
+    path: 'artistIndex',
+    component: GetArtistComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [roleGuardGuard],
+    data: { expectedRoleAdmin: 'Admin', expectedRoleEmployee: 'Employee' }
+  },
+  {
+    path: 'productIndex',
+    component: GetProductComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [roleGuardGuard],
+    data: { expectedRoleAdmin: 'Admin', expectedRoleEmployee: 'Employee' }
+  },
+  {
+    path: 'orderIndex',
+    component: GetOrdersComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [roleGuardGuard],
+    data: { expectedRoleAdmin: 'Admin', expectedRoleEmployee: 'Employee' }
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthorizationGuard],
+  },
+  {
+    path: 'indexUsers',
+    component: GetUsersComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [roleGuardGuard],
+    data: {expectedRoleAdmin:'Admin',expectedRoleEmployee:'Employee'}
+  },
   { path: 'createUpdate', component: CreateUpdateComponent },
   { path: 'createUpdate/:id', component: CreateUpdateComponent },
-  { path: 'productIndex', component: GetProductComponent },
   { path: 'creUpd', component: CreateUpdateProductComponent },
   { path: 'creUpd/:id', component: CreateUpdateProductComponent },
   { path: 'artistCreUpd', component: ArtistCreupComponent},
   { path: 'artistCreUpd/:id', component: ArtistCreupComponent },
-  { path: 'artistIndex', component: GetArtistComponent},
+  { path: 'summary', component: SummaryComponent },
   { path: 'account', loadChildren: () => import('./account/account.module').then(module => module.AccountModule)},
   { path: 'details/:id', component: DetailsComponent },
   { path: 'creator/:id', component: CreatorComponent},
   { path: 'ranking', component: RankingComponent},
   { path: 'market', component: MarketPlaceComponent },
-  { path: 'not-found',component:NotFoundComponent},
+  { path: 'ordersuccess/:id', component: OrdersuccessComponent },
+  { path: 'orderdetails/:id', component: OrderDetailsComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
