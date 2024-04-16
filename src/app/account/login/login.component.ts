@@ -63,14 +63,27 @@ export class LoginComponent {
         this._service.user$.subscribe((data) => {
           if (this.returnUrl) {
             this._redirect.navigate([this.returnUrl]);
+            Swal.fire({
+              icon: 'success',
+              title: `Bienvenido ${data?.name} has inicado sesion`,
+              allowOutsideClick: false
+            }).then((result) => {
+              if (result.isConfirmed) {
+                location.reload();
+              }
+            });
           } else {
             if (data) {
+              this._redirect.navigate(['']);
               Swal.fire({
                 icon: 'success',
-                title: `Bienvenido ${data.name} has inicado sesion`
+                title: `Bienvenido ${data.name} has inicado sesion`,
+                allowOutsideClick: false
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  location.reload();
+                }
               });
-              this._redirect.navigate(['']);
-              
             }
 
           }
