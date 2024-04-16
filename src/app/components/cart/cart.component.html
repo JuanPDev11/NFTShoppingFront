@@ -1,13 +1,49 @@
 <section class="section-cart">
   <div class="cart">
+    <mat-progress-bar *ngIf="!carts" mode="indeterminate"></mat-progress-bar>
     <div class="cart--container">
-      <div class="cart--container-card" *ngFor="let cart of carts">
-        <img src={{cart.product.imageUrl}}>
-        <h3>Name: {{cart.product.name}}</h3>
-        <h3>Count: {{cart.count}} X ${{cart.product.price}}</h3>
-        <h3>Total: {{cart.count * cart.product.price}}$</h3>
+      <div class="cart--container-1">
+        <mat-accordion class="cart--container-1-acordion">
+          <mat-expansion-panel hideToggle class="cart--container-1-acordion-panel">
+            <mat-expansion-panel-header class="cart--container-1-acordion-panel-header">
+              <mat-panel-title class="cart--container-1-acordion-panel-header-container">
+                <h3 class="cart--container-1-acordion-panel-header-title">View your products !</h3>
+                <i class="cart--container-1-acordion-panel-header-title-icon bi bi-caret-down"></i>
+              </mat-panel-title>            
+            </mat-expansion-panel-header>
+            
+            <div class="cart--container-card" *ngFor="let cart of carts">
+              
+                <div class="cart--container-card-div1">
+                  <img src={{cart.product.imageUrl}} width="70" height="70">
+                  <h3 class="cart--container-card-div1-name">Name: {{cart.product.name}}</h3>
+                </div>
+                <div class="cart--container-card-div2">
+                  <h3 class="cart--container-card-div2-count">Count: <span class="span">{{cart.count}}</span> X <span class="span">${{cart.product.price}}</span></h3>
+                  <h3 class="cart--container-card-div2-count">Total: <span class="span">${{cart.count * cart.product.price}}</span></h3>
+                </div>
+                <div class="cart--container-card-div3">
+                  <button class="cart--container-card-div3-btn left" (click)="decrement(1,cart.productID)"> - </button>
+                  <button class="cart--container-card-div3-btn center" (click)="increment(1,cart.productID)"> + </button>
+                  <button class="cart--container-card-div3-btn right" (click)="delete(cart.id)">X</button>
+                </div>
+              
+              <div class="cart--container-1-acordion-panel-radius"></div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
-      <button routerLink="/summary"> Proced to pay</button>
+      <div class="cart--container-2">
+        
+      </div>
+    </div>
+    <div class="cart--button-container">
+      <div class="cart--button-container-1">
+        <button class="cart--button-container-btn red" (click)="deleteRange()" mat-fab extended color="primary">Clear Cart</button>
+        <button class="cart--button-container-btn green" routerLink="/summary" mat-fab extended color="primary">Proced to pay</button>
+      </div>
+      <button *ngIf="orders" class="cart--button-container-btn-total" mat-fab extended color="primary">Total ${{orders.orderHeader.orderTotal}}</button>
+
     </div>
   </div>
 </section>
