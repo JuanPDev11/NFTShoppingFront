@@ -22,6 +22,13 @@ import { CreatorComponent } from './components/creator/creator.component';
 import { DetailsComponent } from './components/details/details.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { MarketPlaceComponent } from './components/market-place/market-place.component';
+import { CartComponent } from './components/cart/cart.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { OrdersuccessComponent } from './components/ordersuccess/ordersuccess.component';
+import { GetOrdersComponent } from './components/get-orders/get-orders.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { GetUsersComponent } from './components/get-users/get-users.component';
+import { CreUpdUsrComponent } from './components/cre-upd-usr/cre-upd-usr.component';
 
 
 
@@ -44,6 +51,13 @@ import { MarketPlaceComponent } from './components/market-place/market-place.com
     DetailsComponent,
     RankingComponent,
     MarketPlaceComponent,
+    CartComponent,
+    SummaryComponent,
+    OrdersuccessComponent,
+    GetOrdersComponent,
+    OrderDetailsComponent,
+    GetUsersComponent,
+    CreUpdUsrComponent,
   ],
   imports: [
     BrowserModule,
